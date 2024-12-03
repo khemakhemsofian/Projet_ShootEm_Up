@@ -13,10 +13,52 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\Assets">
+      <UniqueIdentifier>{7e12545f-3dfe-43b9-9659-ea171e5cb679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Audio">
+      <UniqueIdentifier>{5c5fd84a-ac5f-4cf1-8969-c1833dc239c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Font">
+      <UniqueIdentifier>{2f01a626-fbf7-41cd-8e95-71b820af58f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Image">
+      <UniqueIdentifier>{b1a20eaf-6b47-45c6-b018-082b66067bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Sprite">
+      <UniqueIdentifier>{935517c8-00f8-4314-8955-b37c4d6dea19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg">
+      <Filter>Fichiers sources\Assets\Image</Filter>
+    </Image>
+    <Image Include="Assets\Image\Sprite\Soldier-Idle.png">
+      <Filter>Fichiers sources\Assets\Image\Sprite</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Font\MedievalMystery.ttf">
+      <Filter>Fichiers sources\Assets\Font</Filter>
+    </Font>
+    <Font Include="Assets\Font\MedievalSharp-BoldOblique.ttf">
+      <Filter>Fichiers sources\Assets\Font</Filter>
+    </Font>
+    <Font Include="Assets\Font\RansiteMedieval_PERSONAL_USE_ONLY.otf">
+      <Filter>Fichiers sources\Assets\Font</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Menu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
