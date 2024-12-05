@@ -70,9 +70,9 @@ int main()
                     break;
                 case 1:
                     cout << "Options sélectionnées" << endl;
-                    _inMenu = false; // Quitter le menu
-                    _inOptions = true; // Entrer dans les options
-                    _inGame = false; // Entrer dans les options
+                    _inMenu = false; 
+                    _inOptions = true; 
+                    _inGame = false; 
                     break;
                 case 2:
                     cout << "Quitter le jeu" << endl;
