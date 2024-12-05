@@ -10,9 +10,10 @@ using namespace std;
 class OptionScene
 {
 public:
-	OptionScene(float _width, float _height);
-	void handleEvents(Event& event, RenderWindow& _window);
-	void draw(RenderWindow& _window);
+    OptionScene(float width, float height);
+    void handleEvents(sf::Event& event, sf::RenderWindow& window);
+   // void update(float deltaTime);
+    void draw(sf::RenderWindow& window);
 	
 
 private:

@@ -4,18 +4,26 @@
 #include <vector>
 #include "Menu.h"
 #include <iostream>
+#include "GameScene.h"
+#include "OptionScene.h"
+
 using namespace sf;
 using namespace std;
 int main()
 {
     RenderWindow _window; 
-    _window.create(VideoMode::getDesktopMode(), "A knight journey", Style::Fullscreen);
+ 
+    _window.create(VideoMode::getDesktopMode(), "A knight journey Menu", Style::Fullscreen);
 	_window.setFramerateLimit(60);
 
-   // GameScene* _gameScene;
-   // OptionsScene* _optionsScene;
+
+
+   
+   
+    OptionScene* _optionScene;
     bool _inMenu = true;
     bool _inOptions = false;
+    bool _inGame= false;
 
     Texture _backGroundTexture;
 
@@ -30,9 +38,11 @@ int main()
     );
 
     Menu _menu(_window.getSize().x, _window.getSize().y);
+    _optionScene = new OptionScene(_window.getSize().x, _window.getSize().y);
     // Boucle principale
     while (_window.isOpen()) {
         Event event;
+
         while (_window.pollEvent(event)) {
             if (event.type == Event::Closed)
                 _window.close(); 
@@ -55,11 +65,14 @@ int main()
                 case 0:
                     cout << "Nouvelle Partie sélectionnée" << endl;
                     _inMenu = false;
+                    _inGame = true;
+                  
                     break;
                 case 1:
                     cout << "Options sélectionnées" << endl;
                     _inMenu = false; // Quitter le menu
                     _inOptions = true; // Entrer dans les options
+                    _inGame = false; // Entrer dans les options
                     break;
                 case 2:
                     cout << "Quitter le jeu" << endl;
@@ -69,18 +82,40 @@ int main()
             }
            
         }
+        else if(_inOptions)
+        {
+            _optionScene->handleEvents(event, _window);
+        }
+        else 
+        {
+            Game _game;
+            GameScene _gameScene(_game);
+            _gameScene.run();
+            
+            
+        }
       
      
         _window.clear();
         if (_inMenu)
         {
+            
             _window.draw(_backgroundSprite);
             _menu.draw(_window);
+            
+            
+   
         }
+        else if(_inOptions)
+        {
+            _optionScene->draw(_window);
+        }
+        
         
   
         _window.display();
     }
-
+    
+    delete _optionScene;
     return 0;
 }
