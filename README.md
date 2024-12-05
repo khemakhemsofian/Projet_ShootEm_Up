@@ -2,17 +2,17 @@ Document de Game Design : A knight journey
 1. Informations Générales
 Titre : A knight journey 
 Genre : Shoot'em Up (Shmup)
-Style Visuel : Pixel Art théme médieval.
+Style Visuel : Pixel Art thème médieval.
 Plateforme(s) : PC.
 Public cible : Amateurs de jeux d’arcade et de défis rapides, âgés de 12 ans et plus.
 Résumé :
+Dans un monde ravagé par les ténèbres, vous incarnez un valeureux chevalier, dernier défenseur du royaume, chargé de restaurer la paix en affrontant des hordes de créatures maléfiques  qui dévastent les terres et menacent l'humanité. Armé de votre épée légendaire, de  vôtre arc de légende et du bouclier mystique, combattez dans des batailles frénétiques aux multiples decord.
 
-
-2. Concept de Base
+3. Concept de Base
 Gameplay principal : Le joueur contrôle un chevalier, détruit des vagues d’ennemis et évite des projectiles pour progresser dans les niveaux.
 Objectifs :
 Court terme : Survivre et accumuler des points en détruisant les ennemis.
-Long terme : Compléter les niveaux, vaincre les boss et sauver la princesse.
+Long terme : Compléter les niveaux, vaincre les boss et sauver le royaume.
 Déroulement : Le jeu est divisé en plusieurs niveaux avec une difficulté croissante, chacun se terminant par un combat de boss unique.
 Style de progression : Défilement verticale automatique, avec des phases de répit pour acheter des power-ups et réorganiser ses stratégies.
 
@@ -26,6 +26,7 @@ shield: permet de parer x attaque des mobs et une attaque de boss tous les x tem
 
 3.2. Système de Scoring
 Systéme de gold: tous les 3 enemis porcentage de drop du gold
+Systéme de suivi du nb d'énemeis éliminée
 
 3.3. Power-ups
 Systéme de marchand a chaque fin de vague
@@ -80,8 +81,8 @@ Chaque niveau se termine par un boss avec des mécaniques uniques :
 Niveau 1 : Roi des gobelins
 Arme principale : Marteau attaque en spirale finit sur une aoe cooldown de 10 sec
 Pattern : Lent, créer des degat de zonne autour de son sprite, saute sur le joueur 3 fois après deux attaque échouée au marteau
-Niveau 2 : Kraken-7
-Arme principale : Tentacules mécaniques détruisant tout sur leur passage.
+Niveau 2 : Roi maudit
+Arme principale : Arc qui tire une flêche imense générant une aoe lorsqu'elle touche le sol.
 Pattern : Boucle d’attaques à zone large nécessitant des esquives précises.
 
 5. Progression et Structure
