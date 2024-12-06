@@ -28,6 +28,9 @@
     <Filter Include="Fichiers sources\Assets\Image\Sprite">
       <UniqueIdentifier>{935517c8-00f8-4314-8955-b37c4d6dea19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Assets\Audio\Music">
+      <UniqueIdentifier>{40baede9-2457-4507-ba5e-02bf98b2d3cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -78,5 +81,10 @@
     <ClInclude Include="Game.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3">
+      <Filter>Fichiers sources\Assets\Audio\Music</Filter>
+    </Media>
   </ItemGroup>
 </Project>

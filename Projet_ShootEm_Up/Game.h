@@ -15,11 +15,10 @@ public:
 private:
     void event(Event& _event);
     // void update(float deltaTime);
-    void drawPlayer(float width, float height);
     void rendu();
 
 protected:
-    CircleShape _player;
+  
     RenderWindow& window; 
 };
 

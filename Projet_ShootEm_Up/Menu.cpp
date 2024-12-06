@@ -6,14 +6,28 @@ Menu::Menu(float _width, float _height)
 	{
 		cerr << "Erreur de chargement de la police" << endl;
 	}
-	_backgroundMenu.setSize(Vector2f(_width/2,_height/2));
-	_backgroundMenu.setFillColor(Color(153,76,0,153));
+	if (!_mainMenu.openFromFile("Assets/Audio/Music/The knight journey main menu.mp3")) {
+		cerr << "Erreur de chargement de la musique" << endl;
+	}
+	_mainMenu.setLoop(true);
+	_mainMenu.play();
+	
 	vector<string> _MenuContainer = {"Faire festin de jeu" , "Les besognes de choix", "Abandonner la joute"};
 	_selectedIndex = 0;
+
 	for (size_t i = 0; i < _MenuContainer.size(); i++)
 	{
 		Text _TextMenu;
-
+		_backgroundMenu0.setSize(Vector2f(200.f, 100.f));
+		_backgroundMenu1.setSize(Vector2f(200.f, 100.f));
+		_backgroundMenu2.setSize(Vector2f(200.f, 100.f));
+		_backgroundMenu0.setFillColor(Color(139, 69, 19,230));
+		_backgroundMenu1.setFillColor(Color(139, 69, 19,230));
+		_backgroundMenu2.setFillColor(Color(139, 69, 19,230));
+		_backgroundMenu0.setPosition(_width / 2 - _TextMenu.getGlobalBounds().width / 2, _height / (_MenuContainer.size() + 1) * (i + 1));
+		_backgroundMenu1.setPosition(_width / 2 - _TextMenu.getGlobalBounds().width / 2, _height / (_MenuContainer.size() + 1) * (i + 1));
+		_backgroundMenu2.setPosition(_width / 2 - _TextMenu.getGlobalBounds().width / 2, _height / (_MenuContainer.size() + 1) * (i + 1));
+		
 		_TextMenu.setFont(_MenuFront);
 		_TextMenu.setString(_MenuContainer[i]);
 		_TextMenu.setCharacterSize(24);
@@ -24,9 +38,16 @@ Menu::Menu(float _width, float _height)
 
 void Menu::draw(RenderWindow& _window)
 {
+	
 	for (const auto& _drawMenu : _selectTextMenu)
 	{
 		_window.draw(_drawMenu);
+		_window.draw(_backgroundMenu0);
+		_window.draw(_backgroundMenu1);
+		_window.draw(_backgroundMenu2);
+		
+
+		
 	}
 }
 

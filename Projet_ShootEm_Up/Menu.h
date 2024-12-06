@@ -21,10 +21,15 @@ public:
 	void selectOption(Vector2f mousePosition);
 	void UpdateEffetSurvol(Vector2f mousePosition);
 protected:
-	RectangleShape _backgroundMenu;
+	RectangleShape _backgroundMenu0;
+	RectangleShape _backgroundMenu1;
+	RectangleShape _backgroundMenu2;
+	RectangleShape _backgroundMenu3;
 	vector<Text> _selectTextMenu;
 	int _selectedIndex;
 	Font _MenuFront;
+	Music _mainMenu;
+	
 };
 
 #endif // !MENU_H

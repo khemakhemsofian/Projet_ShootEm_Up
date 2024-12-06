@@ -105,7 +105,12 @@ int main()
         {
             
             _window.draw(_backgroundSprite);
-            _menu.draw(_window);
+             _menu.draw(_window);
+            if (event.type == Event::MouseMoved) {
+                Vector2f _mouseposition = _window.mapPixelToCoords(Vector2i(event.mouseMove.x, event.mouseMove.y));
+                _menu.UpdateEffetSurvol(_mouseposition);
+            }
+            
             
             
    
