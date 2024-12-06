@@ -9,7 +9,7 @@ using namespace std;
 class Game
 {
 public:
-    Game();
+    Game(RenderWindow& window);
     void run();
 
 private:
@@ -20,7 +20,7 @@ private:
 
 protected:
     CircleShape _player;
-    RenderWindow window; // Changement ici : pas de référence
+    RenderWindow& window; 
 };
 
 #endif // !GAME_H

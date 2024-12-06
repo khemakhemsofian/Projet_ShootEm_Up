@@ -16,13 +16,13 @@ public:
     //void handleEvents(Event& event, RenderWindow& window);
     //void update(float deltaTime);
    // void draw(RenderWindow& window);
-    GameScene(Game& _game);
+    GameScene(Game& _game, RenderWindow& window);
     void run();
 
 private:
 
     Game& _game;
-
+    RenderWindow& window;
 };
 
 #endif // !GAMESCENE_H

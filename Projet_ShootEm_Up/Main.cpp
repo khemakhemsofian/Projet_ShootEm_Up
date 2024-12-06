@@ -13,14 +13,19 @@ int main()
 {
     RenderWindow _window; 
  
-    _window.create(VideoMode::getDesktopMode(), "A knight journey Menu", Style::Fullscreen);
+    _window.create(VideoMode::getDesktopMode(), "A knight journey ", Style::Fullscreen);
 	_window.setFramerateLimit(60);
+    Game _game(_window);
+    GameScene _gameScene(_game, _window);
 
+
+   
 
 
    
    
     OptionScene* _optionScene;
+
     bool _inMenu = true;
     bool _inOptions = false;
     bool _inGame= false;
@@ -39,6 +44,7 @@ int main()
 
     Menu _menu(_window.getSize().x, _window.getSize().y);
     _optionScene = new OptionScene(_window.getSize().x, _window.getSize().y);
+   
     // Boucle principale
     while (_window.isOpen()) {
         Event event;
@@ -88,10 +94,8 @@ int main()
         }
         else 
         {
-            Game _game;
-            GameScene _gameScene(_game);
-            _gameScene.run();
             
+            _gameScene.run();
             
         }
       

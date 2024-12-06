@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : window(VideoMode::getDesktopMode(), "A knight journey Game", Style::Fullscreen) {}
+Game::Game(RenderWindow& win) : window(win) {}
 
 
 void Game::run()
