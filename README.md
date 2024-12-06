@@ -82,13 +82,20 @@ Niveau 1 : Roi des gobelins
 Arme principale : Marteau attaque en spirale finit sur une aoe cooldown de 10 sec
 Pattern : Lent, créer des degat de zonne autour de son sprite, saute sur le joueur 3 fois après deux attaque échouée au marteau
 Niveau 2 : Roi maudit
-Arme principale : Arc qui tire une flêche imense générant une aoe lorsqu'elle touche le sol.
-Pattern : Boucle d’attaques à zone large nécessitant des esquives précises.
+Arme principale : Arc qui tire une flêche imense dans la direction du joueur, cooldown de 5sec.
+Pattern : Tir rapide mais ne bouge pas, après avoir perdu la moitié de sa vie il fait pleuvoir des flêches sur une zonne donné.
+Niveau 3 : Seigneur Mordok
+Arme principal : Hache de guerre orc plus bouclier, enchaine un combot de 3 attaque lorsque sur le joueur
+Pattern: active un mode rage qui lui permet de dash 3 fois d'affiler sur le joueur, s'active toutes les 20 secondes, il faut d'abord faire tomber la vie de son shield pour qu'il soit stun, pendant 5 sec, et lui faire des dégats. Il récupére ensuite la vie de son shield et rebelotte.
+Niveau 4: Seigneur démoniaque
+Arme principal : Magie, copie les attaque des anciens boss
+PAttern : poséde 4 phases, les 3 premières correspondent aux 3 boss d'avant. Sa dernière phase il se tp sur le joueur, invoque des boules de feu a tete chercheuse et genere des rayons de lave autour de lui qu'il fait tourner dans le sens qu'il veut
+
 
 5. Progression et Structure
 5.1. Niveaux
-Niveau 1 : Plainne
-Thème : valon, prairie a la fin camp de gobelin.
+Niveau 1 : Bois
+Thème : forêt dense, a la fin camp de gobelin.
 Introduction aux ennemis simples.
 Niveau 2 : Vallée des mort.
 Thème : bois mort, marrais et cimetiere a la fin.
@@ -96,41 +103,46 @@ Nouveaux ennemis : squellete tire a distance.
 Niveau 3 : Forterresse orc.
 Thème : Bbliotéque, salle de banquet, salle du trône.
 Ajout de mob plus tanki.
+Niveau 4 : Les enfer
+thème : les enfers, forterrese infernal
+ajout de mobs volant
 
 5.2. Rythme
 Les niveaux alternent entre moments d’action intense et phases de récupération pour maintenir l'intérêt du joueur.
 Équilibrage entre l’introduction de nouveaux ennemis et des mécaniques innovantes.
 7. Direction Artistique
 6.1. Style Visuel
-Pixel art rétro combiné avec des effets modernes (glow, particules).
-Palette de couleurs évoluant selon les niveaux :
-Niveau 1 : Tons froids (bleu, gris).
-Niveau 2 : Couleurs vives et métalliques (orange, argent).
-Niveau 3 : Palette sombre avec accents néon (vert, violet).
+Pixel art médieval fantasy.
+
 6.2. Interface utilisateur
 HUD :
-Score en haut à gauche.
-Barre de vie du joueur en bas à gauche.
-Indicateurs de power-ups et bombes en bas à droite.
+Score et gold en haut à droite
+Barre de vie du joueur en haut à gauche.
+Cooldown du dash en bas a gauche
+Compétence en bat a gauche
+Arme en main en haut a gauche
+
 8. Direction Audio
 7.1. Musique
-Rythmes électroniques rapides pour les phases d’action.
-Musique plus lourde et dramatique pour les combats de boss.
+Theme medieval posé pour les menus du jeu.
+musique plus entrainante pour les combats
+Musique a théme pour chaque boss.
 7.2. Effets sonores
-Sons distincts pour les tirs, les explosions, et les power-ups.
-Signal audio pour les attaques spéciales des boss ou les situations dangereuses.
-9. Systèmes et Outils
+Sons distincts pour les tirs, le dash, les explosions, bruit a l'achat, bruit pour selection d'un menu.
+Signal audio pour les attaques spéciales des boss.
+
+10. Systèmes et Outils
 8.1. Moteur de Jeu
 SFML
+
 8.2. Logiciels Recommandés
-Pixel art : Aseprite pour les sprites et animations.
-Audio : Bfxr pour les effets sonores, Ableton Live pour la musique.
-10. Monétisation
+Pixel art : Pixel et itch.io.
+Audio : IA suno.
+
+12. Monétisation
 Modèle principal : Jeu premium avec achat unique.
 Contenu additionnel (DLC) :
 Niveaux supplémentaires avec de nouveaux ennemis et boss.
-Packs de skins pour le vaisseau.
-11. Inspirations
-Ikaruga : Patterns de tir complexes et gameplay stratégique.
-Jamestown : Style rétro et modes multijoueurs.
-Galaga : Simplicité et focus sur le scoring.
+
+14. Inspirations
+Le royaume d'Eryndor (livre n'ont officiel, écrit par Duncan Melloul et ses collaborateurs)
