@@ -94,8 +94,8 @@ PAttern : poséde 4 phases, les 3 premières correspondent aux 3 boss d'avant. S
 
 5. Progression et Structure
 5.1. Niveaux
-Niveau 1 : Plainne
-Thème : valon, prairie a la fin camp de gobelin.
+Niveau 1 : Bois
+Thème : forêt dense, a la fin camp de gobelin.
 Introduction aux ennemis simples.
 Niveau 2 : Vallée des mort.
 Thème : bois mort, marrais et cimetiere a la fin.
