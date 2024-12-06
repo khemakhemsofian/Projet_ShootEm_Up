@@ -14,7 +14,7 @@ public:
 
 private:
     void event(Event& _event);
-    // void update();
+    // void update(float deltaTime);
     void drawPlayer(float width, float height);
     void rendu();
 
