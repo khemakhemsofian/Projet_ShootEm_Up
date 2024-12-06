@@ -24,9 +24,10 @@ Menu::Menu(float _width, float _height)
 		_backgroundMenu0.setFillColor(Color(139, 69, 19,230));
 		_backgroundMenu1.setFillColor(Color(139, 69, 19,230));
 		_backgroundMenu2.setFillColor(Color(139, 69, 19,230));
-		_backgroundMenu0.setPosition(_width / 2 - _TextMenu.getGlobalBounds().width / 2, _height / (_MenuContainer.size() + 1) * (i + 1));
-		_backgroundMenu1.setPosition(_width / 2 - _TextMenu.getGlobalBounds().width / 2, _height / (_MenuContainer.size() + 1) * (i + 1));
-		_backgroundMenu2.setPosition(_width / 2 - _TextMenu.getGlobalBounds().width / 2, _height / (_MenuContainer.size() + 1) * (i + 1));
+		_backgroundMenu0.setPosition(Vector2f(0.0f,0.0f));
+		_backgroundMenu1.setPosition(Vector2f(100.0f,100.0f));
+		_backgroundMenu2.setPosition(Vector2f(200.0f,200.0f));
+		
 		
 		_TextMenu.setFont(_MenuFront);
 		_TextMenu.setString(_MenuContainer[i]);
