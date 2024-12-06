@@ -12,6 +12,7 @@ using namespace std;
 int main()
 {
     // ertyuuyshgfgf
+    //iiiiiiiiii
     RenderWindow _window; 
  
     _window.create(VideoMode::getDesktopMode(), "A knight journey ", Style::Fullscreen);
