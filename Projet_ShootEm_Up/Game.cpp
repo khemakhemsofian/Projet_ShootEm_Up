@@ -98,7 +98,7 @@ void Game::rendu()
     for (int i = 0; i < 4; ++i) {
         window.draw(backgroundSprites[i]);
 
-        backgroundSprites[i].setPosition(backgroundTextures[i].getSize().x  -  backgroundOffsets[i], 0);
+        backgroundSprites[i].setPosition(backgroundSprites[i].getGlobalBounds().width - backgroundOffsets[i], 0);
         window.draw(backgroundSprites[i]);
     }
   
