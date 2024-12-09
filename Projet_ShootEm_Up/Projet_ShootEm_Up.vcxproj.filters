@@ -31,6 +31,9 @@
     <Filter Include="Fichiers sources\Assets\Audio\Music">
       <UniqueIdentifier>{40baede9-2457-4507-ba5e-02bf98b2d3cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Jungle">
+      <UniqueIdentifier>{500ad9c3-259b-4598-9b25-4f7ad4109d80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -55,6 +58,18 @@
     </Image>
     <Image Include="Assets\Image\Sprite\Soldier-Idle.png">
       <Filter>Fichiers sources\Assets\Image\Sprite</Filter>
+    </Image>
+    <Image Include="Assets\Image\Jungle\1.Backround.png">
+      <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
+    </Image>
+    <Image Include="Assets\Image\Jungle\2.Trees_back.png">
+      <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
+    </Image>
+    <Image Include="Assets\Image\Jungle\3.Trees_front.png">
+      <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
+    </Image>
+    <Image Include="Assets\Image\Jungle\4.Ground.png">
+      <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

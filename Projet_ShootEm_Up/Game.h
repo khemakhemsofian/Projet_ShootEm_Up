@@ -14,9 +14,14 @@ public:
 
 private:
     void event(Event& _event);
-    // void update(float deltaTime);
+    Clock clock;
+    void update();
     void rendu();
+    Texture backgroundTextures[4];
+    Sprite backgroundSprites[4];
+    float backgroundOffsets[4];
 
+    void loadResources();
 protected:
   
     RenderWindow& window; 

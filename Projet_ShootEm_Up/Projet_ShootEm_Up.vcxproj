@@ -145,6 +145,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg" />
+    <Image Include="Assets\Image\Jungle\1.Backround.png" />
+    <Image Include="Assets\Image\Jungle\2.Trees_back.png" />
+    <Image Include="Assets\Image\Jungle\3.Trees_front.png" />
+    <Image Include="Assets\Image\Jungle\4.Ground.png" />
     <Image Include="Assets\Image\Sprite\Soldier-Idle.png" />
   </ItemGroup>
   <ItemGroup>
