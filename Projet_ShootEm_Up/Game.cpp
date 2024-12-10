@@ -116,7 +116,7 @@ void Game::loadResources()
         throw runtime_error("Erreur de chargement du sprite du personnage");
     }
     playerSprite.setTexture(playerTexture);
-    playerSprite.setScale(2.0f,2.0f);
+    playerSprite.setScale(7.0f,7.0f);
     playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale personnage
 }
 
