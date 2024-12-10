@@ -29,39 +29,42 @@ void Game::event(Event& _event)
 
 void Game::update()
 {
-    const float speeds[4] = { 100.0f, 150.0f, 200.0f, 250.0f }; 
+    const float speeds[4] = { 100.0f, 150.0f, 200.0f, 250.0f };
     float deltaTime = clock.restart().asSeconds();
-    
 
     for (int i = 0; i < 4; ++i) {
-        backgroundOffsets[i] += speeds[i] *deltaTime;
+        // Mettre à jour l'offset de fond en fonction de la vitesse
+        backgroundOffsets[i] += speeds[i] * deltaTime;
+
+        // Calcul de l'échelle
         float scaleX = static_cast<float>(window.getSize().x) / static_cast<float>(backgroundTextures[i].getSize().x);
         float scaleY = static_cast<float>(window.getSize().y) / static_cast<float>(backgroundTextures[i].getSize().y);
         float scale = min(scaleX, scaleY);
 
-        
-        
+        // Appliquer l'échelle à la texture
+        backgroundSprites[i].setScale(scale, scale);
 
-       
+        // Positionner le premier fond à gauche
         backgroundSprites[i].setPosition(
-            (window.getSize().x - backgroundTextures[i].getSize().x * scale) / 2.f,
+            (window.getSize().x - backgroundTextures[i].getSize().x * scale) / 2.f - backgroundOffsets[i],
             (window.getSize().y - backgroundTextures[i].getSize().y * scale) / 2.f
         );
 
-        if (backgroundOffsets[i] >= static_cast<float>(backgroundTextures[i].getSize().x)) {
+        // Positionner le second fond à droite
+        backgroundSprites[i + 4].setScale(scale, scale); // Assurez-vous que vous avez un tableau de sprites avec 2 instances pour chaque fond.
+        backgroundSprites[i + 4].setPosition(
+            (window.getSize().x - backgroundTextures[i].getSize().x * scale) / 2.f - backgroundOffsets[i] + backgroundTextures[i].getSize().x * scale,
+            (window.getSize().y - backgroundTextures[i].getSize().y * scale) / 2.f
+        );
+
+        // Réinitialiser l'offset si un fond dépasse
+        if (backgroundOffsets[i] >= backgroundTextures[i].getSize().x * scale) {
             backgroundOffsets[i] = 0.0f;
         }
-      
-        backgroundSprites[i].setScale(
-            static_cast<float>(window.getSize().x) / static_cast<float>(backgroundTextures[i].getSize().x),
-            static_cast<float>(window.getSize().y) / static_cast<float>(backgroundTextures[i].getSize().y)
-        );
-       // backgroundOffsets[i] = 5.0f;
-        backgroundSprites[i].setPosition( -backgroundOffsets[i],0);
-        
     }
-
 }
+
+
 
 
 void Game::loadResources()
