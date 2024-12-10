@@ -17,6 +17,8 @@ private:
     Clock clock;
     void update();
     void rendu();
+    Texture playerTexture;
+    Sprite playerSprite;
     Texture backgroundTextures[4];
     Sprite backgroundSprites[4];
     float backgroundOffsets[4];
