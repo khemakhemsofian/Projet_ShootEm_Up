@@ -10,13 +10,8 @@ Game::Game(RenderWindow& win) : window(win) {
     playerSprite.setTexture(playerTexture);
     playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale du personnage
 
-    // Agrandir le personnage
-    playerSprite.setScale(2.f, 2.f);
-
-    // Charger la texture des projectiles
-    if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
-        throw runtime_error("Erreur de chargement du sprite des projectiles");
-    }
+    // Taille personnage
+    playerSprite.setScale(6.f, 6.f);
 }
 
 void Game::run()
@@ -77,7 +72,7 @@ void Game::update()
     float moveY = 0.f;
 
     // Vitesse de déplacement
-    const float speed = 5.f;
+    const float speed = 6.f;
 
     // Accumuler les directions en fonction des touches pressées
     if (Keyboard::isKeyPressed(Keyboard::Z)) {
@@ -123,11 +118,18 @@ void Game::loadResources()
         backgroundSprites[i].setTexture(backgroundTextures[i]);
         backgroundTextures[i].setRepeated(true);
     }
+
+
+    // Charger la texture des projectiles
+    if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
+        throw runtime_error("Erreur de chargement du sprite des projectiles");
+    }
+
 }
 void Game::shootProjectile() {
     Sprite projectile;
     projectile.setTexture(projectileTexture);
-    projectile.setScale(1.f, 1.f);
+    projectile.setScale(2.f, 2.f);
     projectile.setRotation(45.0f);
     projectile.setPosition(playerSprite.getPosition().x + playerSprite.getGlobalBounds().width,
         playerSprite.getPosition().y + playerSprite.getGlobalBounds().height / 2.f);
