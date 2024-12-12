@@ -4,7 +4,7 @@ Game::Game(RenderWindow& win) : window(win) {
     window.setVerticalSyncEnabled(true);
 
     // Charger la texture du personnage
-    if (!playerTexture.loadFromFile("Assets/Image/Player/Idle.png")) {
+    if (!playerTexture.loadFromFile("Assets/Image/Player/Idle1.png")) {
         throw runtime_error("Erreur de chargement du sprite du personnage");
     }
     playerSprite.setTexture(playerTexture);
