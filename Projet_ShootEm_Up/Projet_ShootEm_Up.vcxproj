@@ -145,13 +145,13 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg" />
-    <Image Include="..\..\..\..\Downloads\Projectile.png" />
     <Image Include="Assets\Image\Jungle\1.Backround.png" />
     <Image Include="Assets\Image\Jungle\2.Trees_back.png" />
     <Image Include="Assets\Image\Jungle\3.Trees_front.png" />
     <Image Include="Assets\Image\Jungle\4.Ground.png" />
     <Image Include="Assets\Image\Player\Idle.png" />
     <Image Include="Assets\Image\Player\Idle1.png" />
+    <Image Include="Assets\Image\Player\Weapon\Projectile.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Font\MedievalMystery.ttf" />
@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3" />
+    <Media Include="Assets\Audio\Music\Game\The knight journey Game music.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

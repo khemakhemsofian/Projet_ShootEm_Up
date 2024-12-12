@@ -2,6 +2,8 @@
 
 Game::Game(RenderWindow& win) : window(win) {
     window.setVerticalSyncEnabled(true);
+<<<<<<< HEAD
+=======
 
     // Charger la texture du personnage
     if (!playerTexture.loadFromFile("Assets/Image/Player/Idle1.png")) {
@@ -12,10 +14,15 @@ Game::Game(RenderWindow& win) : window(win) {
 
     // Taille personnage
     playerSprite.setScale(6.f, 6.f);
+<<<<<<< Updated upstream
+=======
+>>>>>>> d32bbdfd1215b0a4d9ffb5c47aa1ae6ae7b98b1f
+>>>>>>> Stashed changes
 }
 
 void Game::run()
 {
+    loadResources();
     while (window.isOpen())
     {
         Event _event;
@@ -24,8 +31,8 @@ void Game::run()
         {
             event(_event);
         }
+      
         rendu();
-        loadResources();
         update();
     }
 }
@@ -67,38 +74,41 @@ void Game::update()
         }
     }
 
-    // Déplacement du personnage
     float moveX = 0.f;
     float moveY = 0.f;
 
+<<<<<<< Updated upstream
     // Vitesse de déplacement
     const float speed = 6.f;
+=======
+<<<<<<< HEAD
+    const float speed = 5.f;
+=======
+    // Vitesse de déplacement
+    const float speed = 6.f;
+>>>>>>> d32bbdfd1215b0a4d9ffb5c47aa1ae6ae7b98b1f
+>>>>>>> Stashed changes
 
-    // Accumuler les directions en fonction des touches pressées
     if (Keyboard::isKeyPressed(Keyboard::Z)) {
-        moveY -= speed; // Haut
+        moveY -= speed;
     }
     if (Keyboard::isKeyPressed(Keyboard::S)) {
-        moveY += speed; // Bas
+        moveY += speed;
     }
     if (Keyboard::isKeyPressed(Keyboard::Q)) {
-        moveX -= speed; // Gauche
+        moveX -= speed;
     }
     if (Keyboard::isKeyPressed(Keyboard::D)) {
-        moveX += speed; // Droite
+        moveX += speed;
     }
 
-    // Normalisation de la vitesse pour les diagonales
     if (moveX != 0.f && moveY != 0.f) {
-        float factor = 1.f / sqrt(2.f); // Diviser par racine de 2 pour un mouvement diagonal fluide
+        float factor = 1.f / sqrt(2.f);
         moveX *= factor;
         moveY *= factor;
     }
 
-    // Appliquer le déplacement
     playerSprite.move(moveX, moveY);
-
-    // Mise à jour des projectiles
     updateProjectiles(deltaTime);
 }
 
@@ -119,13 +129,33 @@ void Game::loadResources()
         backgroundTextures[i].setRepeated(true);
     }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    if (!projectileTexture.loadFromFile("Assets/Image/Sprite/Player/Weapon/Projectile.png")) {
+        throw runtime_error("Erreur de chargement du sprite des projectiles");
+    }
+
+    if (!playerTexture.loadFromFile("Assets/Image/Sprite/Player/Idle1.png")) {
+        throw runtime_error("Erreur de chargement du sprite du personnage");
+    }
+    playerSprite.setTexture(playerTexture);
+    playerSprite.setScale(2.f, 2.f);
+    playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f);
+=======
+>>>>>>> Stashed changes
 
     // Charger la texture des projectiles
     if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
         throw runtime_error("Erreur de chargement du sprite des projectiles");
     }
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> d32bbdfd1215b0a4d9ffb5c47aa1ae6ae7b98b1f
+>>>>>>> Stashed changes
 }
+
 void Game::shootProjectile() {
     Sprite projectile;
     projectile.setTexture(projectileTexture);
@@ -142,21 +172,23 @@ void Game::updateProjectiles(float deltaTime) {
     for (auto it = projectiles.begin(); it != projectiles.end(); ) {
         it->move(projectileSpeed * deltaTime, 0.f);
 
-        // Supprimer les projectiles qui sortent de l'écran
         if (it->getPosition().x > window.getSize().x) {
             it = projectiles.erase(it);
-        } else {
+        }
+        else {
             ++it;
         }
     }
 }
 
+void Game::stopMusic() {
+    _gameMusic.stop();
+}
 
 void Game::rendu()
 {
     window.clear();
 
-    // Dessiner les arrières plans
     for (int i = 0; i < 4; ++i) {
         float scaleX = static_cast<float>(window.getSize().x) / static_cast<float>(backgroundTextures[i].getSize().x);
         float scaleY = static_cast<float>(window.getSize().y) / static_cast<float>(backgroundTextures[i].getSize().y);
@@ -175,16 +207,12 @@ void Game::rendu()
         );
         window.draw(backgroundSprites[i]);
     }
- 
 
-    // Dessiner les projectiles
     for (const auto& projectile : projectiles) {
-        window.draw(projectile); // Utilisez 'projectile' au lieu de 'projectiles'
+        window.draw(projectile);
     }
-    // Dessiner le personnage
-    window.draw(playerSprite);
 
-    window.display();
+    window.draw(playerSprite); // Dessine le joueur après les projectiles
+
+    window.display(); // Affiche tout à la fin
 }
-
-

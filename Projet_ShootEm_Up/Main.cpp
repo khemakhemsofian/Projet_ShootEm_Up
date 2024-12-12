@@ -64,6 +64,11 @@ int main()
         }
         if (_inMenu)
         {
+            if (!_mainMenu.Playing)
+            {
+                
+                _mainMenu.play();
+            }
             if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
             {
                 Vector2f _mousePosition = _window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
@@ -97,9 +102,9 @@ int main()
         }
         else if(_inGame)
         {
-            
+            _menu.stopMusic();
             _gameScene.run();
-    
+         
             
         }
       
@@ -123,6 +128,7 @@ int main()
         {
             _optionScene->draw(_window);
         }
+        //else 
         
         
   
