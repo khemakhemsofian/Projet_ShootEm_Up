@@ -2,10 +2,12 @@
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <vector>
-#include "Menu.h"
 #include <iostream>
 #include "GameScene.h"
 #include "OptionScene.h"
+#include "Menu.h"
+
+
 
 using namespace sf;
 using namespace std;
@@ -17,6 +19,7 @@ int main()
 	_window.setFramerateLimit(60);
     Game _game(_window);
     GameScene _gameScene(_game, _window);
+    Music _mainMenu;
 
 
    
@@ -72,7 +75,7 @@ int main()
                     cout << "Nouvelle Partie sélectionnée" << endl;
                     _inMenu = false;
                     _inGame = true;
-                  
+               
                     break;
                 case 1:
                     cout << "Options sélectionnées" << endl;
@@ -92,10 +95,11 @@ int main()
         {
             _optionScene->handleEvents(event, _window);
         }
-        else 
+        else if(_inGame)
         {
             
             _gameScene.run();
+    
             
         }
       

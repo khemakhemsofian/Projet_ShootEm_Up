@@ -20,7 +20,7 @@ private:
     Texture playerTexture;
     Sprite playerSprite;
     Texture backgroundTextures[4];
-    Sprite backgroundSprites[4];
+    Sprite backgroundSprites[8];
     float backgroundOffsets[4];
 
     void loadResources();

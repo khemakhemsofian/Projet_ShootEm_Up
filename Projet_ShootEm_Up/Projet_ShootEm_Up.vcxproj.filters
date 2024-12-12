@@ -34,6 +34,12 @@
     <Filter Include="Fichiers sources\Assets\Image\Jungle">
       <UniqueIdentifier>{500ad9c3-259b-4598-9b25-4f7ad4109d80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Sprite\Player">
+      <UniqueIdentifier>{63287cdc-bc46-4dc7-8980-89e673d8be22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Sprite\Ennemi">
+      <UniqueIdentifier>{1c6cb06b-a7c0-44d6-a994-d6bf62815668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -56,9 +62,6 @@
     <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg">
       <Filter>Fichiers sources\Assets\Image</Filter>
     </Image>
-    <Image Include="Assets\Image\Sprite\Soldier-Idle.png">
-      <Filter>Fichiers sources\Assets\Image\Sprite</Filter>
-    </Image>
     <Image Include="Assets\Image\Jungle\1.Backround.png">
       <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
     </Image>
@@ -70,6 +73,9 @@
     </Image>
     <Image Include="Assets\Image\Jungle\4.Ground.png">
       <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\Idle.png">
+      <Filter>Fichiers sources\Assets\Image\Sprite\Player</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
