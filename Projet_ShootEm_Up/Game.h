@@ -19,14 +19,20 @@ private:
     void rendu();
     Texture playerTexture;
     Sprite playerSprite;
+    Texture projectileTexture;
+    Sprite projectileSprite;
     Texture backgroundTextures[4];
     Sprite backgroundSprites[8];
     float backgroundOffsets[4];
 
     void loadResources();
+    void shootProjectile();
+    void updateProjectiles(float deltaTime);
+
 protected:
-  
+    vector<Sprite> projectiles;
     RenderWindow& window; 
+   
 };
 
 #endif // !GAME_H

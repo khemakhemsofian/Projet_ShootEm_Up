@@ -12,6 +12,11 @@ Game::Game(RenderWindow& win) : window(win) {
 
     // Agrandir le personnage
     playerSprite.setScale(2.f, 2.f);
+
+    // Charger la texture des projectiles
+    if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
+        throw runtime_error("Erreur de chargement du sprite des projectiles");
+    }
 }
 
 void Game::run()
@@ -32,7 +37,9 @@ void Game::run()
 
 void Game::event(Event& _event)
 {
-    // Pas besoin d'ajustements ici pour le déplacement
+    if (_event.type == Event::MouseButtonPressed && _event.mouseButton.button == Mouse::Left) {
+        shootProjectile();
+    }
 }
 
 void Game::update()
@@ -95,6 +102,9 @@ void Game::update()
 
     // Appliquer le déplacement
     playerSprite.move(moveX, moveY);
+
+    // Mise à jour des projectiles
+    updateProjectiles(deltaTime);
 }
 
 void Game::loadResources()
@@ -114,6 +124,31 @@ void Game::loadResources()
         backgroundTextures[i].setRepeated(true);
     }
 }
+void Game::shootProjectile() {
+    Sprite projectile;
+    projectile.setTexture(projectileTexture);
+    projectile.setScale(1.f, 1.f);
+    projectile.setRotation(45.0f);
+    projectile.setPosition(playerSprite.getPosition().x + playerSprite.getGlobalBounds().width,
+        playerSprite.getPosition().y + playerSprite.getGlobalBounds().height / 2.f);
+    projectiles.push_back(projectile);
+}
+
+void Game::updateProjectiles(float deltaTime) {
+    const float projectileSpeed = 300.f;
+
+    for (auto it = projectiles.begin(); it != projectiles.end(); ) {
+        it->move(projectileSpeed * deltaTime, 0.f);
+
+        // Supprimer les projectiles qui sortent de l'écran
+        if (it->getPosition().x > window.getSize().x) {
+            it = projectiles.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
 
 void Game::rendu()
 {
@@ -138,9 +173,16 @@ void Game::rendu()
         );
         window.draw(backgroundSprites[i]);
     }
+ 
 
+    // Dessiner les projectiles
+    for (const auto& projectile : projectiles) {
+        window.draw(projectile); // Utilisez 'projectile' au lieu de 'projectiles'
+    }
     // Dessiner le personnage
     window.draw(playerSprite);
 
     window.display();
 }
+
+
