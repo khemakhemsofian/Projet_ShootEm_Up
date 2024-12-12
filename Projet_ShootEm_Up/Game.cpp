@@ -3,11 +3,19 @@
 Game::Game(RenderWindow& win) : window(win) {
     window.setVerticalSyncEnabled(true);
 
+    // Charger la texture du personnage
+    if (!playerTexture.loadFromFile("Assets/Image/Player/Idle.png")) {
+        throw runtime_error("Erreur de chargement du sprite du personnage");
+    }
+    playerSprite.setTexture(playerTexture);
+    playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale du personnage
+
+    // Agrandir le personnage
+    playerSprite.setScale(2.f, 2.f);
 }
 
 void Game::run()
 {
-    loadResources();
     while (window.isOpen())
     {
         Event _event;
@@ -17,50 +25,14 @@ void Game::run()
             event(_event);
         }
         rendu();
+        loadResources();
         update();
     }
 }
 
 void Game::event(Event& _event)
 {
-    
-    if (_event.type == Event::KeyPressed) {
-        float moveX = 0.f;
-        float moveY = 0.f;
-
-        // Vérification des touches ZQSD pour les directions
-        if (_event.key.code == Keyboard::Z) {
-            moveY = -15.f; // Déplacer vers le haut
-        }
-        else if (_event.key.code == Keyboard::S) {
-            moveY = 15.f;  // Déplacer vers le bas
-        }
-        else if (_event.key.code == Keyboard::Q) {
-            moveX = -15.f; // Déplacer vers la gauche
-        }
-        else if (_event.key.code == Keyboard::D) {
-            moveX = 15.f;  // Déplacer vers la droite
-        }
-        else if (_event.key.code == (Keyboard::Q | Keyboard::Z)) {
-            moveX = -15.f; // Déplacer en haut à gauche
-            moveY = -15.f;
-        }
-        else if (_event.key.code == (Keyboard::D | Keyboard::Z)) {
-            moveX = 15.f;  // Déplacer en haut à droite
-            moveY = -15.f;
-        }
-        else if (_event.key.code == (Keyboard::Q | Keyboard::S)) {
-            moveX = -15.f; // Déplacer en bas à gauche
-            moveY = 15.f;
-        }
-        else if (_event.key.code == (Keyboard::D | Keyboard::S)) {
-            moveX = 15.f;  // Déplacer en bas à droite
-            moveY = 15.f;
-        }
-
-        // Appliquer le déplacement
-        playerSprite.move(moveX, moveY);
-    }
+    // Pas besoin d'ajustements ici pour le déplacement
 }
 
 void Game::update()
@@ -82,7 +54,7 @@ void Game::update()
             (window.getSize().y - backgroundTextures[i].getSize().y * scale) / 2.f
         );
 
-        backgroundSprites[i + 4].setScale(scale, scale); 
+        backgroundSprites[i + 4].setScale(scale, scale);
         backgroundSprites[i + 4].setPosition(
             (window.getSize().x - backgroundTextures[i].getSize().x * scale) / 2.f - backgroundOffsets[i] + backgroundTextures[i].getSize().x * scale,
             (window.getSize().y - backgroundTextures[i].getSize().y * scale) / 2.f
@@ -92,6 +64,37 @@ void Game::update()
             backgroundOffsets[i] = 0.0f;
         }
     }
+
+    // Déplacement du personnage
+    float moveX = 0.f;
+    float moveY = 0.f;
+
+    // Vitesse de déplacement
+    const float speed = 5.f;
+
+    // Accumuler les directions en fonction des touches pressées
+    if (Keyboard::isKeyPressed(Keyboard::Z)) {
+        moveY -= speed; // Haut
+    }
+    if (Keyboard::isKeyPressed(Keyboard::S)) {
+        moveY += speed; // Bas
+    }
+    if (Keyboard::isKeyPressed(Keyboard::Q)) {
+        moveX -= speed; // Gauche
+    }
+    if (Keyboard::isKeyPressed(Keyboard::D)) {
+        moveX += speed; // Droite
+    }
+
+    // Normalisation de la vitesse pour les diagonales
+    if (moveX != 0.f && moveY != 0.f) {
+        float factor = 1.f / sqrt(2.f); // Diviser par racine de 2 pour un mouvement diagonal fluide
+        moveX *= factor;
+        moveY *= factor;
+    }
+
+    // Appliquer le déplacement
+    playerSprite.move(moveX, moveY);
 }
 
 void Game::loadResources()
@@ -110,19 +113,11 @@ void Game::loadResources()
         backgroundSprites[i].setTexture(backgroundTextures[i]);
         backgroundTextures[i].setRepeated(true);
     }
-
-    // Charger la texture du personnage
-    if (!playerTexture.loadFromFile("Assets/Image/Player/Idle.png")) {
-        throw runtime_error("Erreur de chargement du sprite du personnage");
-    }
-    playerSprite.setTexture(playerTexture);
-    playerSprite.setScale(7.0f,7.0f);
-    playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale personnage
 }
 
 void Game::rendu()
 {
-    window.clear(); 
+    window.clear();
 
     // Dessiner les arrières plans
     for (int i = 0; i < 4; ++i) {
@@ -147,5 +142,5 @@ void Game::rendu()
     // Dessiner le personnage
     window.draw(playerSprite);
 
-    window.display(); 
+    window.display();
 }
