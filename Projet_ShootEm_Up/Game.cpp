@@ -120,7 +120,7 @@ void Game::update()
 
     // Normalisation de la vitesse pour les diagonales
     if (moveX != 0.f && moveY != 0.f) {
-        float factor = 1.f / sqrt(2.f); // Diviser par racine de 2 pour un mouvement diagonal fluide
+        float factor = 1.f / sqrt(2.f); // Pour un mouvement diagonal fluide
         moveX *= factor;
         moveY *= factor;
     }
