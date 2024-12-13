@@ -36,6 +36,10 @@ protected:
     vector<Sprite> projectiles;
     RenderWindow& window; 
     Music _gameMusic;
+   vector<Texture> idleTextures; // Pour les textures Idle
+    size_t idleFrame = 0;              // Frame actuelle de l'animation
+    float idleFrameTime = 0.2f;        // Temps entre deux frames (en secondes)
+    float idleFrameTimer = 0.0f;       // Timer pour gérer le changement de frame
 };
 
 #endif // !GAME_H

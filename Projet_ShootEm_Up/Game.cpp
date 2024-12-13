@@ -3,15 +3,7 @@
 Game::Game(RenderWindow& win) : window(win) {
     window.setVerticalSyncEnabled(true);
 
-    // Charger la texture du personnage
-    if (!playerTexture.loadFromFile("Assets/Image/Player/Idle1.png")) {
-        throw runtime_error("Erreur de chargement du sprite du personnage");
-    }
-    playerSprite.setTexture(playerTexture);
-    playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale du personnage
 
-    // Taille personnage
-    playerSprite.setScale(6.f, 6.f);
 }
 
 void Game::run()
@@ -31,6 +23,24 @@ void Game::run()
 }
 void Game::loadResources()
 {
+    for (int i = 1; i <= 6; ++i) {
+        Texture texture;
+        if (!texture.loadFromFile("Assets/Image/Player/Idle" + std::to_string(i) + ".png")) {
+            throw runtime_error("Erreur de chargement du sprite Idle" + std::to_string(i));
+        }
+        // Charger la texture du personnage
+        if (!playerTexture.loadFromFile("Assets/Image/Player/Idle1.png")) {
+            throw runtime_error("Erreur de chargement du sprite du personnage");
+        }
+        playerSprite.setTexture(playerTexture);
+        playerSprite.setTexture(idleTextures[0]); // Premier frame Idle
+        playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale du personnage
+
+        // Taille personnage
+        playerSprite.setScale(6.f, 6.f);
+        idleTextures.push_back(texture);
+    }
+    
     const string filenames[4] = {
         "Assets/Image/Jungle/1.Backround.png",
         "Assets/Image/Jungle/2.Trees_back.png",
@@ -95,6 +105,18 @@ void Game::update()
         if (backgroundOffsets[i] >= backgroundTextures[i].getSize().x * scale) {
             backgroundOffsets[i] = 0.0f;
         }
+    }
+
+   
+
+    // Gestion de l'animation Idle
+    idleFrameTimer += deltaTime;
+    if (idleFrameTimer >= idleFrameTime) {
+        idleFrameTimer -= idleFrameTime;
+
+        // Passer à la frame suivante
+        idleFrame = (idleFrame + 1) % idleTextures.size();
+        playerSprite.setTexture(idleTextures[idleFrame]);
     }
 
     // Déplacement du personnage
