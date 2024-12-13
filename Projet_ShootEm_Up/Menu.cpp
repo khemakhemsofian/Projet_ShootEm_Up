@@ -6,7 +6,7 @@ Menu::Menu(float _width, float _height)
 	{
 		cerr << "Erreur de chargement de la police" << endl;
 	}
-	if (!_mainMenu.openFromFile("Assets/Audio/Music/Menu/The knight journey main menu.mp3")) {
+	if (!_mainMenu.openFromFile("Assets/Audio/Music/The knight journey main menu.mp3")) {
 		cerr << "Erreur de chargement de la musique" << endl;
 	}
 	_mainMenu.setLoop(true);
@@ -35,10 +35,6 @@ Menu::Menu(float _width, float _height)
 		_TextMenu.setPosition(_width/2 - _TextMenu.getGlobalBounds().width/ 2 , _height / (_MenuContainer.size() + 1)* (i + 1 ));
 		_selectTextMenu.push_back(_TextMenu);
 	}
-}
-
-void Menu::stopMusic() {
-	_mainMenu.stop(); // Arrête la musique du menu
 }
 
 void Menu::draw(RenderWindow& _window)

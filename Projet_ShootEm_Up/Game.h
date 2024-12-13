@@ -28,12 +28,10 @@ private:
     void loadResources();
     void shootProjectile();
     void updateProjectiles(float deltaTime);
-    void stopMusic();
 
 protected:
     vector<Sprite> projectiles;
     RenderWindow& window; 
-    Music _gameMusic;
    
 };
 
