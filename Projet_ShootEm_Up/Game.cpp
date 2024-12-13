@@ -16,6 +16,7 @@ Game::Game(RenderWindow& win) : window(win) {
 
 void Game::run()
 {
+    loadResources();
     while (window.isOpen())
     {
         Event _event;
@@ -25,16 +26,45 @@ void Game::run()
             event(_event);
         }
         rendu();
-        loadResources();
         update();
     }
 }
+void Game::loadResources()
+{
+    const string filenames[4] = {
+        "Assets/Image/Jungle/1.Backround.png",
+        "Assets/Image/Jungle/2.Trees_back.png",
+        "Assets/Image/Jungle/3.Trees_front.png",
+        "Assets/Image/Jungle/4.Ground.png"
+    };
 
+    for (int i = 0; i < 4; ++i) {
+        if (!backgroundTextures[i].loadFromFile(filenames[i])) {
+            throw runtime_error("Erreur de chargement de " + filenames[i]);
+        }
+        backgroundSprites[i].setTexture(backgroundTextures[i]);
+        backgroundTextures[i].setRepeated(true);
+    }
+
+
+    // Charger la texture des projectiles
+    if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
+        throw runtime_error("Erreur de chargement du sprite des projectiles");
+    }
+
+    if (!_gameMusic.openFromFile("Assets/Audio/Music/Game/The knight journey game-music.mp3")) {
+        throw runtime_error("Erreur de chargement de la musique du jeu");
+    }	
+    _gameMusic.setLoop(true);
+    _gameMusic.play();
+
+}
 void Game::event(Event& _event)
 {
     if (_event.type == Event::MouseButtonPressed && _event.mouseButton.button == Mouse::Left) {
         shootProjectile();
     }
+
 }
 
 void Game::update()
@@ -102,30 +132,7 @@ void Game::update()
     updateProjectiles(deltaTime);
 }
 
-void Game::loadResources()
-{
-    const string filenames[4] = {
-        "Assets/Image/Jungle/1.Backround.png",
-        "Assets/Image/Jungle/2.Trees_back.png",
-        "Assets/Image/Jungle/3.Trees_front.png",
-        "Assets/Image/Jungle/4.Ground.png"
-    };
 
-    for (int i = 0; i < 4; ++i) {
-        if (!backgroundTextures[i].loadFromFile(filenames[i])) {
-            throw runtime_error("Erreur de chargement de " + filenames[i]);
-        }
-        backgroundSprites[i].setTexture(backgroundTextures[i]);
-        backgroundTextures[i].setRepeated(true);
-    }
-
-
-    // Charger la texture des projectiles
-    if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
-        throw runtime_error("Erreur de chargement du sprite des projectiles");
-    }
-
-}
 void Game::shootProjectile() {
     Sprite projectile;
     projectile.setTexture(projectileTexture);
@@ -150,7 +157,13 @@ void Game::updateProjectiles(float deltaTime) {
         }
     }
 }
-
+void Game::playMusic() {
+    _gameMusic.setLoop(true);
+    _gameMusic.play();
+}
+void Game::stopMusic() {
+    _gameMusic.stop(); 
+}
 
 void Game::rendu()
 {

@@ -19,14 +19,7 @@ int main()
 	_window.setFramerateLimit(60);
     Game _game(_window);
     GameScene _gameScene(_game, _window);
-    Music _mainMenu;
-
-
-   
-
-
-   
-   
+    Music _MenuMusic;
     OptionScene* _optionScene;
 
     bool _inMenu = true;
@@ -64,6 +57,8 @@ int main()
         }
         if (_inMenu)
         {
+            
+            
             if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left)
             {
                 Vector2f _mousePosition = _window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
@@ -73,9 +68,10 @@ int main()
                 {
                 case 0:
                     cout << "Nouvelle Partie sélectionnée" << endl;
+                    _menu.stopMusic();
                     _inMenu = false;
                     _inGame = true;
-               
+                    _game.playMusic();
                     break;
                 case 1:
                     cout << "Options sélectionnées" << endl;
@@ -97,10 +93,14 @@ int main()
         }
         else if(_inGame)
         {
-            
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape) {
+                _game.stopMusic(); 
+                _menu.playMusic(); 
+                _inGame = false; 
+                _inMenu = true; 
+            }
             _gameScene.run();
-    
-            
+          
         }
       
      

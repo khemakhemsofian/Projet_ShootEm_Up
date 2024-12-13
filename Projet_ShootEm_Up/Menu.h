@@ -20,6 +20,8 @@ public:
 	int getSelectedIndex();
 	void selectOption(Vector2f mousePosition);
 	void UpdateEffetSurvol(Vector2f mousePosition);
+	void playMusic();
+	void stopMusic();
 protected:
 	RectangleShape _backgroundMenu0;
 	RectangleShape _backgroundMenu1;
@@ -28,7 +30,7 @@ protected:
 	vector<Text> _selectTextMenu;
 	int _selectedIndex;
 	Font _MenuFront;
-	Music _mainMenu;
+	Music _MenuMusic;
 	
 };
 

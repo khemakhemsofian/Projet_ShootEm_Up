@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3" />
+    <Media Include="Assets\Audio\Music\Game\The knight journey game-music.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

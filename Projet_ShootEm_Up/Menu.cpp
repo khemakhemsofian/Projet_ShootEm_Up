@@ -6,11 +6,11 @@ Menu::Menu(float _width, float _height)
 	{
 		cerr << "Erreur de chargement de la police" << endl;
 	}
-	if (!_mainMenu.openFromFile("Assets/Audio/Music/The knight journey main menu.mp3")) {
+	if (!_MenuMusic.openFromFile("Assets/Audio/Music/Menu/The knight journey main menu.mp3")) {
 		cerr << "Erreur de chargement de la musique" << endl;
 	}
-	_mainMenu.setLoop(true);
-	_mainMenu.play();
+	_MenuMusic.setLoop(true);
+	_MenuMusic.play();
 	
 	vector<string> _MenuContainer = {"Faire festin de jeu" , "Les besognes de choix", "Abandonner la joute"};
 	_selectedIndex = 0;
@@ -46,9 +46,7 @@ void Menu::draw(RenderWindow& _window)
 		_window.draw(_backgroundMenu0);
 		_window.draw(_backgroundMenu1);
 		_window.draw(_backgroundMenu2);
-		
 
-		
 	}
 }
 
@@ -81,6 +79,12 @@ void Menu::selectOption(Vector2f mousePosition)
 			break;
 		}
 	}
+}
+void Menu::playMusic() {
+	_MenuMusic.play(); 
+}
+void Menu::stopMusic() {
+	_MenuMusic.stop(); 
 }
 
 void Menu::UpdateEffetSurvol(Vector2f mousePosition)

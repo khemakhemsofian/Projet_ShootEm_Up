@@ -11,6 +11,8 @@ class Game
 public:
     Game(RenderWindow& window);
     void run();
+    void playMusic();
+    void stopMusic();
 
 private:
     void event(Event& _event);
@@ -29,10 +31,11 @@ private:
     void shootProjectile();
     void updateProjectiles(float deltaTime);
 
+
 protected:
     vector<Sprite> projectiles;
     RenderWindow& window; 
-   
+    Music _gameMusic;
 };
 
 #endif // !GAME_H
