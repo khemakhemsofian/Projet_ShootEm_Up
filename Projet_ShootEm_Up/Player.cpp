@@ -8,25 +8,21 @@ Player::Player(RenderWindow& win) : window(win) {
 }
 
 void Player::loadResources() {
-    
+
     if (!playerTexture.loadFromFile("Assets/Image/Player/IdleFrames/Idle1.png")) {
         throw runtime_error("Erreur de chargement du sprite du personnage");
     }
     playerSprite.setTexture(playerTexture);
-    playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); 
-    playerSprite.setScale(6.f, 6.f); 
+    playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f);
+    playerSprite.setScale(6.f, 6.f);
 
 
     sf::Texture texture;
     for (int i = 1; i <= 6; ++i) {
-<<<<<<< HEAD
-        Texture texture;
-=======
->>>>>>> 6caf13f44c2358f8946dd118b191636d37fadc4b
         if (!texture.loadFromFile("Assets/Image/Player/IdleFrames/Idle" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Idle" + to_string(i));
         }
-        idleTextures.push_back(texture);    
+        idleTextures.push_back(texture);
     }
     cout << idleTextures.size();
     if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
@@ -41,26 +37,21 @@ void Player::loadResources() {
     }
 
     walkFrame = 0;
-    walkFrameTime = 0.1f;  
+    walkFrameTime = 0.1f;
     walkFrameTimer = 0.0f;
-  
+
     idleFrame = 0;
     idleFrameTime = 0.2f;
     idleFrameTimer = 0.0f;
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> 6caf13f44c2358f8946dd118b191636d37fadc4b
 
 }
 
 void Player::Events(const Event& event) {
- 
+
     if (event.type == Event::MouseButtonPressed && event.mouseButton.button == Mouse::Left) {
         shootProjectile();
     }
-  
+
 }
 
 void Player::update(float deltaTime) {
@@ -72,7 +63,7 @@ void Player::update(float deltaTime) {
         // Animation de repos (idle)
         if (idleFrameTimer >= idleFrameTime) {
             idleFrameTimer -= idleFrameTime;
-            idleFrame = (idleFrame + 1) % (idleTextures.size()-1);
+            idleFrame = (idleFrame + 1) % (idleTextures.size() - 1);
             playerSprite.setTexture(idleTextures[idleFrame]);
             cout << idleFrame << endl;
         }
@@ -81,7 +72,7 @@ void Player::update(float deltaTime) {
         // Animation de marche
         if (walkFrameTimer >= walkFrameTime) {
             walkFrameTimer -= walkFrameTime;
-            walkFrame = (walkFrame + 1) % (walkTextures.size()-1);
+            walkFrame = (walkFrame + 1) % (walkTextures.size() - 1);
             playerSprite.setTexture(walkTextures[walkFrame]);
         }
     }
@@ -124,7 +115,7 @@ bool Player::isMoving() const {
 
 
 void Player::shootProjectile() {
-    
+
     Sprite projectile;
     projectile.setTexture(projectileTexture);
     projectile.setScale(2.f, 2.f);
@@ -140,7 +131,7 @@ void Player::updateProjectiles(float deltaTime) {
     for (auto it = projectiles.begin(); it != projectiles.end();) {
         it->move(projectileSpeed * deltaTime, 0.f);
 
-        
+
         if (it->getPosition().x > window.getSize().x) {
             it = projectiles.erase(it);
         }
@@ -150,10 +141,10 @@ void Player::updateProjectiles(float deltaTime) {
     }
 }
 void Player::draw(RenderWindow& window) {
-    
+
     window.draw(playerSprite);
 
-  
+
     for (const auto& projectile : projectiles) {
         window.draw(projectile);
     }
