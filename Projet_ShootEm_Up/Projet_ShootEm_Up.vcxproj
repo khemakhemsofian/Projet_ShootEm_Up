@@ -180,7 +180,6 @@
     <Image Include="Assets\Image\Player\WalkFrames\Walk4.png" />
     <Image Include="Assets\Image\Player\WalkFrames\Walk5.png" />
     <Image Include="Assets\Image\Player\WalkFrames\Walk6.png" />
-    <Image Include="Assets\Image\Player\WalkFrames\Walk7.png" />
     <Image Include="Assets\Image\Player\WalkFrames\Walk8.png" />
     <Image Include="Assets\Image\Player\Weapon\Projectile.png" />
   </ItemGroup>
