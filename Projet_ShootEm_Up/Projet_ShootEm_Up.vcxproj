@@ -151,24 +151,6 @@
     <Image Include="Assets\Image\Jungle\2.Trees_back.png" />
     <Image Include="Assets\Image\Jungle\3.Trees_front.png" />
     <Image Include="Assets\Image\Jungle\4.Ground.png" />
-    <Image Include="Assets\Image\Player\Deaths\Death1.png" />
-    <Image Include="Assets\Image\Player\Deaths\Death2.png" />
-    <Image Include="Assets\Image\Player\Deaths\Death3.png" />
-    <Image Include="Assets\Image\Player\Deaths\Death4.png" />
-    <Image Include="Assets\Image\Player\Idles\Idle1.png" />
-    <Image Include="Assets\Image\Player\Idles\Idle2.png" />
-    <Image Include="Assets\Image\Player\Idles\Idle3.png" />
-    <Image Include="Assets\Image\Player\Idles\Idle4.png" />
-    <Image Include="Assets\Image\Player\Idles\Idle5.png" />
-    <Image Include="Assets\Image\Player\Idles\Idle6.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk1.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk2.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk3.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk4.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk5.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk6.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk7.png" />
-    <Image Include="Assets\Image\Player\Walks\Walk8.png" />
     <Image Include="Assets\Image\Player\Weapon\Projectile.png" />
   </ItemGroup>
   <ItemGroup>
