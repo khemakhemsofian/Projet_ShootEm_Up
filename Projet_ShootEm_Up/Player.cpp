@@ -8,7 +8,7 @@ Player::Player(RenderWindow& win) : window(win) {
 
 void Player::loadResources() {
     
-    if (!playerTexture.loadFromFile("Assets/Image/Player/Idle1.png")) {
+    if (!playerTexture.loadFromFile("Assets/Image/Player/IdleFrames/Idle1.png")) {
         throw runtime_error("Erreur de chargement du sprite du personnage");
     }
     playerSprite.setTexture(playerTexture);
@@ -18,7 +18,7 @@ void Player::loadResources() {
  
     for (int i = 1; i <= 6; ++i) {
         sf::Texture texture;
-        if (!texture.loadFromFile("Assets/Image/Player/Idle" + to_string(i) + ".png")) {
+        if (!texture.loadFromFile("Assets/Image/Player/IdleFrames/Idle" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Idle" + to_string(i));
         }
         idleTextures.push_back(texture);
