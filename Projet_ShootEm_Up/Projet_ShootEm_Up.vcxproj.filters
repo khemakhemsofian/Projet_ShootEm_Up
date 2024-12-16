@@ -40,6 +40,12 @@
     <Filter Include="Fichiers sources\Assets\Image\Sprite\Ennemi">
       <UniqueIdentifier>{1c6cb06b-a7c0-44d6-a994-d6bf62815668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Assets\Audio\Music\Menu">
+      <UniqueIdentifier>{781573e3-1f0f-4f93-a76f-da88e9020c4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Audio\Music\Game">
+      <UniqueIdentifier>{9c6f8ec4-4ac4-486d-af86-463baaff4834}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -77,6 +83,12 @@
     <Image Include="Assets\Image\Player\Idle.png">
       <Filter>Fichiers sources\Assets\Image\Sprite\Player</Filter>
     </Image>
+    <Image Include="..\..\..\..\Downloads\Projectile.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\Idle1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Font\MedievalMystery.ttf">
@@ -105,7 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3">
-      <Filter>Fichiers sources\Assets\Audio\Music</Filter>
+      <Filter>Fichiers sources\Assets\Audio\Music\Menu</Filter>
+    </Media>
+    <Media Include="Assets\Audio\Music\Game\The knight journey game-music.mp3">
+      <Filter>Fichiers sources\Assets\Audio\Music\Game</Filter>
     </Media>
   </ItemGroup>
 </Project>
