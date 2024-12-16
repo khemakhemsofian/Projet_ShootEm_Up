@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ennemi.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -147,10 +148,40 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death1.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death2.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death3.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death4.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk1.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk2.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk3.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk4.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk5.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk6.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk7.png" />
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk8.png" />
     <Image Include="Assets\Image\Jungle\1.Backround.png" />
     <Image Include="Assets\Image\Jungle\2.Trees_back.png" />
     <Image Include="Assets\Image\Jungle\3.Trees_front.png" />
     <Image Include="Assets\Image\Jungle\4.Ground.png" />
+    <Image Include="Assets\Image\Player\DeathFrames\Death1.png" />
+    <Image Include="Assets\Image\Player\DeathFrames\Death2.png" />
+    <Image Include="Assets\Image\Player\DeathFrames\Death3.png" />
+    <Image Include="Assets\Image\Player\DeathFrames\Death4.png" />
+    <Image Include="Assets\Image\Player\IdleFrames\Idle1.png" />
+    <Image Include="Assets\Image\Player\IdleFrames\Idle2.png" />
+    <Image Include="Assets\Image\Player\IdleFrames\Idle3.png" />
+    <Image Include="Assets\Image\Player\IdleFrames\Idle4.png" />
+    <Image Include="Assets\Image\Player\IdleFrames\Idle5.png" />
+    <Image Include="Assets\Image\Player\IdleFrames\Idle6.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk1.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk2.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk3.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk4.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk5.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk6.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk7.png" />
+    <Image Include="Assets\Image\Player\WalkFrames\Walk8.png" />
     <Image Include="Assets\Image\Player\Weapon\Projectile.png" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +190,7 @@
     <Font Include="Assets\Font\RansiteMedieval_PERSONAL_USE_ONLY.otf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ennemi.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Menu.h" />

@@ -17,7 +17,7 @@ void Player::loadResources() {
 
  
     for (int i = 1; i <= 6; ++i) {
-        sf::Texture texture;
+        Texture texture;
         if (!texture.loadFromFile("Assets/Image/Player/IdleFrames/Idle" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Idle" + to_string(i));
         }
@@ -32,7 +32,7 @@ void Player::loadResources() {
     idleFrameTime = 0.2f;
     idleFrameTimer = 0.0f;
     
-    //hffhgf
+
 
  
 }

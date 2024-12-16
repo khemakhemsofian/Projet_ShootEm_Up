@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Player.h"
+#include "Ennemi.h"
 
 using namespace sf;
 using namespace std;
@@ -28,6 +29,7 @@ private:
     void shootProjectile();
     void updateProjectiles(float deltaTime);
     Player player;
+    Ennemi ennemi;
     Music _gameMusic;
 
 

@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(RenderWindow& win) : window(win), player(win) {
+Game::Game(RenderWindow& win) : window(win), player(win), ennemi(win){
     window.setVerticalSyncEnabled(true);
 
 
@@ -48,8 +48,9 @@ void Game::loadResources()
 }
 void Game::event(Event& _event)
 {
-   
+    
     player.Events(_event);
+    ennemi.Events(_event);
 }
 
 void Game::update()
@@ -117,6 +118,7 @@ void Game::rendu()
         window.draw(backgroundSprites[i]);
     }
     player.draw(window);
+    ennemi.draw(window);
     window.display();
 }
 

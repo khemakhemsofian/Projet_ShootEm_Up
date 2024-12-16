@@ -16,10 +16,10 @@ public:
     void shootProjectile();
 
 private:
+    RenderWindow& window;
     Texture playerTexture;
     Sprite playerSprite;
     vector<Sprite> projectiles;
-    RenderWindow& window;
     Texture projectileTexture;
 
     vector<Texture> idleTextures;
