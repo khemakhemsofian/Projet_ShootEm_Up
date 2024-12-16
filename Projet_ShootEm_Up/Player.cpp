@@ -31,6 +31,7 @@ void Player::loadResources() {
     idleFrame = 0;
     idleFrameTime = 0.2f;
     idleFrameTimer = 0.0f;
+    
 
 
  
