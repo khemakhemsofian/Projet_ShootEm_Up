@@ -22,7 +22,7 @@ void Player::loadResources() {
         if (!texture.loadFromFile("Assets/Image/Player/IdleFrames/Idle" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Idle" + to_string(i));
         }
-        idleTextures.push_back(texture);
+        idleTextures.push_back(texture);    
     }
     cout << idleTextures.size();
     if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
