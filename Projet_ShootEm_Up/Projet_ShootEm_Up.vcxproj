@@ -142,6 +142,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="OptionScene.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg" />
@@ -152,6 +154,7 @@
     <Image Include="Assets\Image\Jungle\4.Ground.png" />
     <Image Include="Assets\Image\Player\Idle.png" />
     <Image Include="Assets\Image\Player\Idle1.png" />
+    <Image Include="Assets\Image\Player\Weapon\Projectile.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\Font\MedievalMystery.ttf" />
@@ -166,7 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3" />
+    <Media Include="Assets\Audio\Music\Game\Player_projectile_attack_sword_0.wav" />
     <Media Include="Assets\Audio\Music\Game\The knight journey game-music.mp3" />
+    <Media Include="Assets\Audio\Music\Menu\UI-Click_Sound.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

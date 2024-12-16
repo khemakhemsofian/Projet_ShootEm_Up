@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game(RenderWindow& win) : window(win) {
+Game::Game(RenderWindow& win) : window(win), player(win) {
     window.setVerticalSyncEnabled(true);
 
 
@@ -23,23 +23,7 @@ void Game::run()
 }
 void Game::loadResources()
 {
-    for (int i = 1; i <= 6; ++i) {
-        Texture texture;
-        if (!texture.loadFromFile("Assets/Image/Player/Idle" + std::to_string(i) + ".png")) {
-            throw runtime_error("Erreur de chargement du sprite Idle" + std::to_string(i));
-        }
-        // Charger la texture du personnage
-        if (!playerTexture.loadFromFile("Assets/Image/Player/Idle1.png")) {
-            throw runtime_error("Erreur de chargement du sprite du personnage");
-        }
-        playerSprite.setTexture(playerTexture);
-        playerSprite.setTexture(idleTextures[0]); // Premier frame Idle
-        playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); // Position initiale du personnage
-
-        // Taille personnage
-        playerSprite.setScale(6.f, 6.f);
-        idleTextures.push_back(texture);
-    }
+  
     
     const string filenames[4] = {
         "Assets/Image/Jungle/1.Backround.png",
@@ -55,13 +39,6 @@ void Game::loadResources()
         backgroundSprites[i].setTexture(backgroundTextures[i]);
         backgroundTextures[i].setRepeated(true);
     }
-
-
-    // Charger la texture des projectiles
-    if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
-        throw runtime_error("Erreur de chargement du sprite des projectiles");
-    }
-
     if (!_gameMusic.openFromFile("Assets/Audio/Music/Game/The knight journey game-music.mp3")) {
         throw runtime_error("Erreur de chargement de la musique du jeu");
     }	
@@ -71,10 +48,8 @@ void Game::loadResources()
 }
 void Game::event(Event& _event)
 {
-    if (_event.type == Event::MouseButtonPressed && _event.mouseButton.button == Mouse::Left) {
-        shootProjectile();
-    }
-
+   
+    player.Events(_event);
 }
 
 void Game::update()
@@ -106,79 +81,11 @@ void Game::update()
             backgroundOffsets[i] = 0.0f;
         }
     }
-
+    player.update(deltaTime);
+ 
    
-
-    // Gestion de l'animation Idle
-    idleFrameTimer += deltaTime;
-    if (idleFrameTimer >= idleFrameTime) {
-        idleFrameTimer -= idleFrameTime;
-
-        // Passer à la frame suivante
-        idleFrame = (idleFrame + 1) % idleTextures.size();
-        playerSprite.setTexture(idleTextures[idleFrame]);
-    }
-
-    // Déplacement du personnage
-    float moveX = 0.f;
-    float moveY = 0.f;
-
-    // Vitesse de déplacement
-    const float speed = 6.f;
-
-    // Accumuler les directions en fonction des touches pressées
-    if (Keyboard::isKeyPressed(Keyboard::Z)) {
-        moveY -= speed; // Haut
-    }
-    if (Keyboard::isKeyPressed(Keyboard::S)) {
-        moveY += speed; // Bas
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Q)) {
-        moveX -= speed; // Gauche
-    }
-    if (Keyboard::isKeyPressed(Keyboard::D)) {
-        moveX += speed; // Droite
-    }
-
-    // Normalisation de la vitesse pour les diagonales
-    if (moveX != 0.f && moveY != 0.f) {
-        float factor = 1.f / sqrt(2.f); // Pour un mouvement diagonal fluide
-        moveX *= factor;
-        moveY *= factor;
-    }
-
-    // Appliquer le déplacement
-    playerSprite.move(moveX, moveY);
-
-    // Mise à jour des projectiles
-    updateProjectiles(deltaTime);
 }
 
-
-void Game::shootProjectile() {
-    Sprite projectile;
-    projectile.setTexture(projectileTexture);
-    projectile.setScale(2.f, 2.f);
-    projectile.setRotation(45.0f);
-    projectile.setPosition(playerSprite.getPosition().x + playerSprite.getGlobalBounds().width,
-        playerSprite.getPosition().y + playerSprite.getGlobalBounds().height / 2.f);
-    projectiles.push_back(projectile);
-}
-
-void Game::updateProjectiles(float deltaTime) {
-    const float projectileSpeed = 300.f;
-
-    for (auto it = projectiles.begin(); it != projectiles.end(); ) {
-        it->move(projectileSpeed * deltaTime, 0.f);
-
-        // Supprimer les projectiles qui sortent de l'écran
-        if (it->getPosition().x > window.getSize().x) {
-            it = projectiles.erase(it);
-        } else {
-            ++it;
-        }
-    }
-}
 void Game::playMusic() {
     _gameMusic.setLoop(true);
     _gameMusic.play();
@@ -191,7 +98,6 @@ void Game::rendu()
 {
     window.clear();
 
-    // Dessiner les arrières plans
     for (int i = 0; i < 4; ++i) {
         float scaleX = static_cast<float>(window.getSize().x) / static_cast<float>(backgroundTextures[i].getSize().x);
         float scaleY = static_cast<float>(window.getSize().y) / static_cast<float>(backgroundTextures[i].getSize().y);
@@ -210,15 +116,7 @@ void Game::rendu()
         );
         window.draw(backgroundSprites[i]);
     }
- 
-
-    // Dessiner les projectiles
-    for (const auto& projectile : projectiles) {
-        window.draw(projectile); // Utilisez 'projectile' au lieu de 'projectiles'
-    }
-    // Dessiner le personnage
-    window.draw(playerSprite);
-
+    player.draw(window);
     window.display();
 }
 

@@ -46,6 +46,9 @@
     <Filter Include="Fichiers sources\Assets\Audio\Music\Game">
       <UniqueIdentifier>{9c6f8ec4-4ac4-486d-af86-463baaff4834}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Sprite\Player\Weapon">
+      <UniqueIdentifier>{da02a904-5596-4ffe-bea5-621611f7fbb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -62,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +97,9 @@
     </Image>
     <Image Include="Assets\Image\Player\Idle1.png">
       <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\Weapon\Projectile.png">
+      <Filter>Fichiers sources\Assets\Image\Sprite\Player\Weapon</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +133,12 @@
     </Media>
     <Media Include="Assets\Audio\Music\Game\The knight journey game-music.mp3">
       <Filter>Fichiers sources\Assets\Audio\Music\Game</Filter>
+    </Media>
+    <Media Include="Assets\Audio\Music\Game\Player_projectile_attack_sword_0.wav">
+      <Filter>Fichiers sources\Assets\Audio\Music\Game</Filter>
+    </Media>
+    <Media Include="Assets\Audio\Music\Menu\UI-Click_Sound.wav">
+      <Filter>Fichiers sources\Assets\Audio\Music\Menu</Filter>
     </Media>
   </ItemGroup>
 </Project>
