@@ -1,6 +1,7 @@
 // Player.cpp
 #include "Player.h"
 #include "Game.h"
+#include <iostream>
 
 Player::Player(RenderWindow& win) : window(win) {
     loadResources();
@@ -15,26 +16,43 @@ void Player::loadResources() {
     playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f); 
     playerSprite.setScale(6.f, 6.f); 
 
- 
+
+    sf::Texture texture;
     for (int i = 1; i <= 6; ++i) {
+<<<<<<< HEAD
         Texture texture;
+=======
+>>>>>>> 6caf13f44c2358f8946dd118b191636d37fadc4b
         if (!texture.loadFromFile("Assets/Image/Player/IdleFrames/Idle" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Idle" + to_string(i));
         }
         idleTextures.push_back(texture);    
     }
+    cout << idleTextures.size();
     if (!projectileTexture.loadFromFile("Assets/Image/Player/Weapon/Projectile.png")) {
         throw runtime_error("Erreur de chargement du sprite des projectiles");
     }
 
+    for (int i = 1; i <= 8; ++i) {
+        if (!texture.loadFromFile("Assets/Image/Player/WalkFrames/Walk" + to_string(i) + ".png")) {
+            throw runtime_error("Erreur de chargement du sprite Walk" + to_string(i));
+        }
+        walkTextures.push_back(texture);
+    }
+
+    walkFrame = 0;
+    walkFrameTime = 0.1f;  
+    walkFrameTimer = 0.0f;
   
     idleFrame = 0;
     idleFrameTime = 0.2f;
     idleFrameTimer = 0.0f;
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 6caf13f44c2358f8946dd118b191636d37fadc4b
 
- 
 }
 
 void Player::Events(const Event& event) {
@@ -46,33 +64,49 @@ void Player::Events(const Event& event) {
 }
 
 void Player::update(float deltaTime) {
-
     idleFrameTimer += deltaTime;
-    if (idleFrameTimer >= idleFrameTime) {
-        idleFrameTimer -= idleFrameTime;
-        idleFrame = (idleFrame + 1) % idleTextures.size();
-        playerSprite.setTexture(idleTextures[idleFrame]);
+    walkFrameTimer += deltaTime;
+
+    // Gérer l'animation idle
+    if (!isMoving()) {
+        // Animation de repos (idle)
+        if (idleFrameTimer >= idleFrameTime) {
+            idleFrameTimer -= idleFrameTime;
+            idleFrame = (idleFrame + 1) % (idleTextures.size()-1);
+            playerSprite.setTexture(idleTextures[idleFrame]);
+            cout << idleFrame << endl;
+        }
     }
+    else {
+        // Animation de marche
+        if (walkFrameTimer >= walkFrameTime) {
+            walkFrameTimer -= walkFrameTime;
+            walkFrame = (walkFrame + 1) % (walkTextures.size()-1);
+            playerSprite.setTexture(walkTextures[walkFrame]);
+        }
+    }
+
+    // Déplacement du personnage
     float moveX = 0.0f;
     float moveY = 0.0f;
     const float speed = 6.0f;
- 
+
     if (Keyboard::isKeyPressed(Keyboard::Z)) {
-        moveY -= speed; 
+        moveY -= speed;
     }
     if (Keyboard::isKeyPressed(Keyboard::S)) {
-        moveY += speed; 
+        moveY += speed;
     }
     if (Keyboard::isKeyPressed(Keyboard::Q)) {
-        moveX -= speed; 
+        moveX -= speed;
     }
     if (Keyboard::isKeyPressed(Keyboard::D)) {
-        moveX += speed; 
+        moveX += speed;
     }
 
-  
+    // Normalisation du déplacement pour une vitesse constante
     if (moveX != 0.f && moveY != 0.f) {
-        float factor = 1.f / sqrt(2.f); 
+        float factor = 1.f / sqrt(2.f);
         moveX *= factor;
         moveY *= factor;
     }
@@ -81,6 +115,13 @@ void Player::update(float deltaTime) {
 
     updateProjectiles(deltaTime);
 }
+
+// Fonction pour vérifier si le joueur est en mouvement
+bool Player::isMoving() const {
+    return (Keyboard::isKeyPressed(Keyboard::Z) || Keyboard::isKeyPressed(Keyboard::S) ||
+        Keyboard::isKeyPressed(Keyboard::Q) || Keyboard::isKeyPressed(Keyboard::D));
+}
+
 
 void Player::shootProjectile() {
     

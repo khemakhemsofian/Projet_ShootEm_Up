@@ -14,6 +14,7 @@ public:
     void update(float deltaTime);
     void draw(RenderWindow& window);
     void shootProjectile();
+    bool isMoving() const;
 
 private:
     RenderWindow& window;
@@ -21,6 +22,11 @@ private:
     Sprite playerSprite;
     vector<Sprite> projectiles;
     Texture projectileTexture;
+
+    std::vector<sf::Texture> walkTextures;  
+    int walkFrame;                          
+    float walkFrameTime;                    
+    float walkFrameTimer;
 
     vector<Texture> idleTextures;
     size_t idleFrame;
