@@ -17,7 +17,7 @@ void Player::loadResources() {
     playerSprite.setScale(6.f, 6.f);
 
 
-    sf::Texture texture;
+    Texture texture;
     for (int i = 1; i <= 6; ++i) {
         if (!texture.loadFromFile("Assets/Image/Player/IdleFrames/Idle" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Idle" + to_string(i));
@@ -36,6 +36,14 @@ void Player::loadResources() {
         walkTextures.push_back(texture);
     }
 
+    for (int i = 1; i <= 4; ++i) {
+        if (!texture.loadFromFile("Assets/Image/Player/DeathFrames/Death" + std::to_string(i) + ".png")) {
+            throw std::runtime_error("Erreur de chargement du sprite Death" + std::to_string(i));
+        }
+        deathTextures.push_back(texture);
+    }
+
+
     walkFrame = 0;
     walkFrameTime = 0.1f;
     walkFrameTimer = 0.0f;
@@ -44,18 +52,34 @@ void Player::loadResources() {
     idleFrameTime = 0.2f;
     idleFrameTimer = 0.0f;
 
+    deathFrame = 0;
+    deathFrameTime = 0.2f;  
+    deathFrameTimer = 0.0f;
+    isDead = false;
+
     maxHealth = 100.0f;  // La vie maximale du personnage
     health = maxHealth;  
 
-    //// Barre de vie de fond (arrière-plan)
+    // Barre de vie de fond (arrière-plan)
     healthBarBackground.setSize(sf::Vector2f(200.f, 20.f));  // Taille de la barre
     healthBarBackground.setPosition(10.f, 10.f);  
-    healthBarBackground.setFillColor(sf::Color(50, 50, 50));  
+    healthBarBackground.setFillColor(sf::Color::Red);  
 
     // Barre de vie (partie dynamique)
     healthBar.setSize(sf::Vector2f(200.f, 20.f));  
     healthBar.setPosition(10.f, 10.f);  
     healthBar.setFillColor(sf::Color(0, 255, 0));
+
+    // Chargement de la police pour "Game Over"
+    if (!gameOverFont.loadFromFile("Assets/Font/MedievalMystery.ttf")) {
+        throw std::runtime_error("Erreur de chargement de la police Game Over");
+    }
+
+    gameOverText.setFont(gameOverFont);
+    gameOverText.setString("Game Over");
+    gameOverText.setCharacterSize(50);
+    gameOverText.setFillColor(sf::Color::Red);
+    gameOverText.setPosition(300.f, 200.f);  // Position au centre
 
 }
 
@@ -65,50 +89,58 @@ void Player::Events(const Event& event) {
         shootProjectile();
     }
 
+    if (event.type == Event::KeyPressed && event.key.code == Keyboard::H) {
+        takeDamage(10.0f);  // Appliquer 10 points de dégâts
+    }
+
 }
 
 void Player::update(float deltaTime) {
+    if (isDead) {
+        // Animation de mort
+        deathFrameTimer += deltaTime;
+        if (deathFrameTimer >= deathFrameTime) {
+            deathFrameTimer -= deathFrameTime;
+
+            
+            if (deathFrame < deathTextures.size() - 1) {
+                deathFrame++;
+                playerSprite.setTexture(deathTextures[deathFrame]);
+            }
+        }
+        return;  // On fait plus rien car personnage mort
+    }
+
+    // Gére les animations et le mouvement si personnage vivant
     idleFrameTimer += deltaTime;
     walkFrameTimer += deltaTime;
 
-    // Gérer l'animation idle
     if (!isMoving()) {
-        // Animation de repos (idle)
+        // Animation Idle
         if (idleFrameTimer >= idleFrameTime) {
             idleFrameTimer -= idleFrameTime;
-            idleFrame = (idleFrame + 1) % (idleTextures.size() - 1);
+            idleFrame = (idleFrame + 1) % idleTextures.size();
             playerSprite.setTexture(idleTextures[idleFrame]);
-            cout << idleFrame << endl;
         }
     }
     else {
-        // Animation de marche
+        // Animation Walk
         if (walkFrameTimer >= walkFrameTime) {
             walkFrameTimer -= walkFrameTime;
-            walkFrame = (walkFrame + 1) % (walkTextures.size() - 1);
+            walkFrame = (walkFrame + 1) % walkTextures.size();
             playerSprite.setTexture(walkTextures[walkFrame]);
         }
     }
 
-    // Déplacement du personnage
-    float moveX = 0.0f;
-    float moveY = 0.0f;
+    // Déplacement
+    float moveX = 0.0f, moveY = 0.0f;
     const float speed = 6.0f;
 
-    if (Keyboard::isKeyPressed(Keyboard::Z)) {
-        moveY -= speed;
-    }
-    if (Keyboard::isKeyPressed(Keyboard::S)) {
-        moveY += speed;
-    }
-    if (Keyboard::isKeyPressed(Keyboard::Q)) {
-        moveX -= speed;
-    }
-    if (Keyboard::isKeyPressed(Keyboard::D)) {
-        moveX += speed;
-    }
+    if (Keyboard::isKeyPressed(Keyboard::Z)) moveY -= speed;
+    if (Keyboard::isKeyPressed(Keyboard::S)) moveY += speed;
+    if (Keyboard::isKeyPressed(Keyboard::Q)) moveX -= speed;
+    if (Keyboard::isKeyPressed(Keyboard::D)) moveX += speed;
 
-    // Normalisation du déplacement pour une vitesse constante
     if (moveX != 0.f && moveY != 0.f) {
         float factor = 1.f / sqrt(2.f);
         moveX *= factor;
@@ -120,11 +152,30 @@ void Player::update(float deltaTime) {
     updateProjectiles(deltaTime);
 }
 
+
 // Fonction pour vérifier si le joueur est en mouvement
 bool Player::isMoving() const {
     return (Keyboard::isKeyPressed(Keyboard::Z) || Keyboard::isKeyPressed(Keyboard::S) ||
         Keyboard::isKeyPressed(Keyboard::Q) || Keyboard::isKeyPressed(Keyboard::D));
 }
+
+
+void Player::takeDamage(float damage) {
+    if (isDead) return;  // Ne rien faire si le personnage est déjà mort
+
+    health -= damage;
+    if (health <= 0) {
+        health = 0;
+        isDead = true;  // Le personnage est mort
+        deathFrame = 0;  // Réinitialiser l'animation de mort
+        playerSprite.setTexture(deathTextures[0]);  
+        std::cout << "Le personnage est mort!" << std::endl;
+    }
+
+    // Mettre à jour la barre de vie
+    healthBar.setSize(sf::Vector2f((health / maxHealth) * 200.f, 20.f));
+}
+
 
 
 void Player::shootProjectile() {
@@ -153,14 +204,21 @@ void Player::updateProjectiles(float deltaTime) {
         }
     }
 }
+
 void Player::draw(RenderWindow& window) {
 
     window.draw(playerSprite);
 
-    window.draw(healthBarBackground);  
-    window.draw(healthBar);
+    if (!isDead) {
+        window.draw(healthBarBackground);
+        window.draw(healthBar);
+    }
+    else {
+        window.draw(gameOverText);
+    }
 
     for (const auto& projectile : projectiles) {
         window.draw(projectile);
     }
 }
+
