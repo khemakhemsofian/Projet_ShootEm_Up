@@ -83,6 +83,7 @@ void Game::update()
         }
     }
     player.update(deltaTime);
+    ennemi.update(deltaTime);
  
    
 }
