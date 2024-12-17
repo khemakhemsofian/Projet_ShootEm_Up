@@ -13,15 +13,15 @@ public:
     void Events(Event& _event);
     void EnnemiMovement(float deltaTime);
     void loadResources();
-    void Spawn();
+ 
 
 private:
     RenderWindow& window;
     float deltaTime;
     Sprite ennemiSprite;
     Texture ennemiTexture;
-    float speed;
-    float x;
+
+
 };
 
 #endif // ENNEMI_H
