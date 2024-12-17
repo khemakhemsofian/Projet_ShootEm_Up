@@ -33,6 +33,10 @@ private:
     float idleFrameTime;
     float idleFrameTimer;
 
+   /* float health;
+    float maxHealth;
+    sf::RectangleShape healthBarBackground;
+    sf::RectangleShape healthBar;*/
 
     void loadResources();
     void updateProjectiles(float deltaTime);
