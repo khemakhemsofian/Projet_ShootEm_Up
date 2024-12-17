@@ -44,18 +44,18 @@ void Player::loadResources() {
     idleFrameTime = 0.2f;
     idleFrameTimer = 0.0f;
 
-    //maxHealth = 100.0f;  // La vie maximale du personnage
-    //health = maxHealth;  
+    maxHealth = 100.0f;  // La vie maximale du personnage
+    health = maxHealth;  
 
     //// Barre de vie de fond (arrière-plan)
-    //healthBarBackground.setSize(sf::Vector2f(200.f, 20.f));  // Taille de la barre
-    //healthBarBackground.setPosition(10.f, 10.f);  
-    //healthBarBackground.setFillColor(sf::Color(50, 50, 50));  
+    healthBarBackground.setSize(sf::Vector2f(200.f, 20.f));  // Taille de la barre
+    healthBarBackground.setPosition(10.f, 10.f);  
+    healthBarBackground.setFillColor(sf::Color(50, 50, 50));  
 
-    //// Barre de vie (partie dynamique)
-    //healthBar.setSize(sf::Vector2f(200.f, 20.f));  
-    //healthBar.setPosition(10.f, 10.f);  
-    //healthBar.setFillColor(sf::Color(0, 255, 0));
+    // Barre de vie (partie dynamique)
+    healthBar.setSize(sf::Vector2f(200.f, 20.f));  
+    healthBar.setPosition(10.f, 10.f);  
+    healthBar.setFillColor(sf::Color(0, 255, 0));
 
 }
 
@@ -157,8 +157,8 @@ void Player::draw(RenderWindow& window) {
 
     window.draw(playerSprite);
 
-    /*window.draw(healthBarBackground);  
-    window.draw(healthBar);*/
+    window.draw(healthBarBackground);  
+    window.draw(healthBar);
 
     for (const auto& projectile : projectiles) {
         window.draw(projectile);
