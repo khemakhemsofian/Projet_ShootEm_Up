@@ -68,11 +68,13 @@ void Player::Events(const Event& event) {
 }
 
 void Player::update(float deltaTime) {
-    idleFrameTimer += deltaTime;
-    walkFrameTimer += deltaTime;
+    //float moveX = 0.0f;
+    //float moveY = 0.0f;
+    //const float speed = 6.0f;
 
     // Gérer l'animation idle
     if (!isMoving()) {
+        idleFrameTimer += deltaTime;
         // Animation de repos (idle)
         if (idleFrameTimer >= idleFrameTime) {
             idleFrameTimer -= idleFrameTime;
@@ -82,6 +84,7 @@ void Player::update(float deltaTime) {
         }
     }
     else {
+        walkFrameTimer += deltaTime;
         // Animation de marche
         if (walkFrameTimer >= walkFrameTime) {
             walkFrameTimer -= walkFrameTime;
@@ -90,7 +93,6 @@ void Player::update(float deltaTime) {
         }
     }
 
-    // Déplacement du personnage
     float moveX = 0.0f;
     float moveY = 0.0f;
     const float speed = 6.0f;

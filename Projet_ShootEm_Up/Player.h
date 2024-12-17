@@ -15,15 +15,15 @@ public:
     void draw(RenderWindow& window);
     void shootProjectile();
     bool isMoving() const;
-
 private:
+    float deltaTime;
     RenderWindow& window;
     Texture playerTexture;
     Sprite playerSprite;
     vector<Sprite> projectiles;
     Texture projectileTexture;
 
-    std::vector<sf::Texture> walkTextures;  
+    vector<Texture> walkTextures;  
     int walkFrame;                          
     float walkFrameTime;                    
     float walkFrameTimer;
@@ -35,8 +35,8 @@ private:
 
     float health;
     float maxHealth;
-    sf::RectangleShape healthBarBackground;
-    sf::RectangleShape healthBar;
+    RectangleShape healthBarBackground;
+    RectangleShape healthBar;
 
     void loadResources();
     void updateProjectiles(float deltaTime);

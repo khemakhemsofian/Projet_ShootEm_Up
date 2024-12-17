@@ -17,6 +17,7 @@ public:
     void stopMusic();
 
 private:
+    float deltaTime;
     RenderWindow& window;
     void event(Event& _event);
     Clock clock;
@@ -26,8 +27,6 @@ private:
     Sprite backgroundSprites[8];
     float backgroundOffsets[4];
     void loadResources();
-    void shootProjectile();
-    void updateProjectiles(float deltaTime);
     Player player;
     Ennemi ennemi;
     Music _gameMusic;

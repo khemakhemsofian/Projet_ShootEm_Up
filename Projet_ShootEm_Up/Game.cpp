@@ -1,8 +1,9 @@
 #include "Game.h"
 
+
 Game::Game(RenderWindow& win) : window(win), player(win), ennemi(win){
     window.setVerticalSyncEnabled(true);
-
+    
   
 }
 
@@ -83,7 +84,7 @@ void Game::update()
         }
     }
     player.update(deltaTime);
-  
+ 
 }
 
 void Game::playMusic() {
