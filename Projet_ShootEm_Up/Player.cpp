@@ -175,7 +175,7 @@ void Player::takeDamage(float damage) {
     // Mettre à jour la barre de vie
     healthBar.setSize(sf::Vector2f((health / maxHealth) * 200.f, 20.f));
 }
-
+ 
 
 
 void Player::shootProjectile() {

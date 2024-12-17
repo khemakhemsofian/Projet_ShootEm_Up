@@ -86,7 +86,7 @@ int main()
                 }
             }
            
-        }
+        } 
         else if(_inOptions)
         {
             _optionScene->handleEvents(event, _window);

@@ -54,7 +54,7 @@ void Game::event(Event& _event)
 }
 
 void Game::update()
-{
+{ 
     const float speeds[4] = { 100.0f, 150.0f, 200.0f, 250.0f };
     float deltaTime = clock.restart().asSeconds();
 

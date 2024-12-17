@@ -16,7 +16,7 @@ public:
     void shootProjectile();
     bool isMoving() const;
     void takeDamage(float damage);
-
+     
 private:
     RenderWindow& window;
     Texture playerTexture;

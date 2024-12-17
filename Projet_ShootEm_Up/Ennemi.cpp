@@ -7,7 +7,7 @@ Ennemi::Ennemi(RenderWindow& window) : window(window)
 }
 
 void Ennemi::loadResources()
-{
+{ 
     if (!ennemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk1.png"))
     {
         throw runtime_error("Erreur de chargement du sprite de l'ennemi");

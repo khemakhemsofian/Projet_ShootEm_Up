@@ -1,6 +1,6 @@
 #ifndef ENNEMI_H
 #define ENNEMI_H
-
+ 
 #include <SFML/Graphics.hpp>
 using namespace sf;
 using namespace std;
