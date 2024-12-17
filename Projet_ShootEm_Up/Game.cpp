@@ -3,7 +3,7 @@
 Game::Game(RenderWindow& win) : window(win), player(win), ennemi(win){
     window.setVerticalSyncEnabled(true);
 
-
+  
 }
 
 void Game::run()
@@ -83,9 +83,7 @@ void Game::update()
         }
     }
     player.update(deltaTime);
-    ennemi.update(deltaTime);
- 
-   
+  
 }
 
 void Game::playMusic() {
@@ -119,7 +117,6 @@ void Game::rendu()
         window.draw(backgroundSprites[i]);
     }
     player.draw(window);
-    ennemi.draw(window);
     window.display();
 }
 
