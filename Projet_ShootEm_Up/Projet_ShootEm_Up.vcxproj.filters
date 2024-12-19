@@ -25,20 +25,11 @@
     <Filter Include="Fichiers sources\Assets\Image">
       <UniqueIdentifier>{b1a20eaf-6b47-45c6-b018-082b66067bc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Assets\Image\Sprite">
-      <UniqueIdentifier>{935517c8-00f8-4314-8955-b37c4d6dea19}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\Assets\Audio\Music">
       <UniqueIdentifier>{40baede9-2457-4507-ba5e-02bf98b2d3cd}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources\Assets\Image\Jungle">
       <UniqueIdentifier>{500ad9c3-259b-4598-9b25-4f7ad4109d80}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Assets\Image\Sprite\Player">
-      <UniqueIdentifier>{63287cdc-bc46-4dc7-8980-89e673d8be22}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\Assets\Image\Sprite\Ennemi">
-      <UniqueIdentifier>{1c6cb06b-a7c0-44d6-a994-d6bf62815668}</UniqueIdentifier>
     </Filter>
     <Filter Include="Fichiers sources\Assets\Audio\Music\Menu">
       <UniqueIdentifier>{781573e3-1f0f-4f93-a76f-da88e9020c4e}</UniqueIdentifier>
@@ -46,8 +37,17 @@
     <Filter Include="Fichiers sources\Assets\Audio\Music\Game">
       <UniqueIdentifier>{9c6f8ec4-4ac4-486d-af86-463baaff4834}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Assets\Image\Sprite\Player\Weapon">
+    <Filter Include="Fichiers sources\Assets\Image\Ennemi">
+      <UniqueIdentifier>{1c6cb06b-a7c0-44d6-a994-d6bf62815668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Player">
+      <UniqueIdentifier>{63287cdc-bc46-4dc7-8980-89e673d8be22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\Player\Weapon">
       <UniqueIdentifier>{da02a904-5596-4ffe-bea5-621611f7fbb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Assets\Image\BOSS">
+      <UniqueIdentifier>{935517c8-00f8-4314-8955-b37c4d6dea19}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +93,7 @@
       <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
     </Image>
     <Image Include="Assets\Image\Player\Weapon\Projectile.png">
-      <Filter>Fichiers sources\Assets\Image\Sprite\Player\Weapon</Filter>
+      <Filter>Fichiers sources\Assets\Image\Player\Weapon</Filter>
     </Image>
     <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death1.png">
       <Filter>Fichiers de ressources</Filter>
