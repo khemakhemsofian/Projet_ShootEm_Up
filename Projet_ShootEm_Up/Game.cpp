@@ -43,6 +43,7 @@ void Game::loadResources()
         throw runtime_error("Erreur de chargement de la musique du jeu");
     }	
     _gameMusic.setLoop(true);
+    _gameMusic.setVolume(30.f);
     _gameMusic.play();
 
 }

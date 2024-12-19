@@ -26,8 +26,6 @@ private:
     Sprite backgroundSprites[8];
     float backgroundOffsets[4];
     void loadResources();
-    void shootProjectile();
-    void updateProjectiles(float deltaTime);
     Player player;
     Ennemi ennemi;
     Music _gameMusic;

@@ -43,6 +43,16 @@ void Player::loadResources() {
         deathTextures.push_back(texture);
     }
 
+    if (!shootSoundBuffer.loadFromFile("Assets/Audio/Music/Game/Player_projectile_attack_sword_0.wav")) {
+        throw std::runtime_error("Erreur de chargement du son de tir");
+    }
+    shootSound.setBuffer(shootSoundBuffer);
+    shootSound.setVolume(70.f);
+
+    // Initialiser le cooldown
+    shootCooldownTime = 0.5f;  // 0.5 seconde entre deux tirs
+    shootCooldownTimer = 0.0f;
+
 
     walkFrame = 0;
     walkFrameTime = 0.1f;
@@ -77,9 +87,9 @@ void Player::loadResources() {
 
     gameOverText.setFont(gameOverFont);
     gameOverText.setString("Game Over");
-    gameOverText.setCharacterSize(50);
+    gameOverText.setCharacterSize(200);
     gameOverText.setFillColor(sf::Color::Red);
-    gameOverText.setPosition(300.f, 200.f);  // Position au centre
+    gameOverText.setPosition(400.f, 400.f);  // Position au centre
 
 }
 
@@ -92,10 +102,15 @@ void Player::Events(const Event& event) {
     if (event.type == Event::KeyPressed && event.key.code == Keyboard::H) {
         takeDamage(10.0f);  // Appliquer 10 points de dégâts
     }
-
+    //if (event.type == Event::MouseButtonPressed)
 }
 
 void Player::update(float deltaTime) {
+
+    if (shootCooldownTimer > 0.0f) {
+        shootCooldownTimer -= deltaTime;
+    }
+
     if (isDead) {
         // Animation de mort
         deathFrameTimer += deltaTime;
@@ -180,13 +195,21 @@ void Player::takeDamage(float damage) {
 
 void Player::shootProjectile() {
 
+    if (shootCooldownTimer > 0.0f) {
+        return;
+    }
+
+    shootCooldownTimer = shootCooldownTime;
+
     Sprite projectile;
     projectile.setTexture(projectileTexture);
     projectile.setScale(2.f, 2.f);
     projectile.setRotation(45.0f);
     projectile.setPosition(playerSprite.getPosition().x + playerSprite.getGlobalBounds().width,
         playerSprite.getPosition().y + playerSprite.getGlobalBounds().height / 2.f);
+    shootSound.play();
     projectiles.push_back(projectile);
+
 }
 
 void Player::updateProjectiles(float deltaTime) {

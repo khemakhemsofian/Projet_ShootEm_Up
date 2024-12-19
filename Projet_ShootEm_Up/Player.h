@@ -48,6 +48,13 @@ private:
     sf::RectangleShape healthBarBackground;
     sf::RectangleShape healthBar;
 
+    sf::SoundBuffer shootSoundBuffer;
+    sf::Sound shootSound;
+
+
+    float shootCooldownTime;  
+    float shootCooldownTimer; 
+
     void loadResources();
     void updateProjectiles(float deltaTime);
 };
