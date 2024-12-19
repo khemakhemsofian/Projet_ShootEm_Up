@@ -106,7 +106,6 @@ void Player::Events(const Event& event) {
 }
 
 void Player::update(float deltaTime) {
-<<<<<<< HEAD
 
     if (shootCooldownTimer > 0.0f) {
         shootCooldownTimer -= deltaTime;
@@ -128,21 +127,21 @@ void Player::update(float deltaTime) {
     }
 
     // Gére les animations et le mouvement si personnage vivant
-    idleFrameTimer += deltaTime;
-    walkFrameTimer += deltaTime;
-=======
+    //idleFrameTimer += deltaTime;
+    //walkFrameTimer += deltaTime;
+
     //float moveX = 0.0f;
     //float moveY = 0.0f;
     //const float speed = 6.0f;
->>>>>>> ennemi
+
 
     if (!isMoving()) {
-<<<<<<< HEAD
+
         // Animation Idle
-=======
+
         idleFrameTimer += deltaTime;
         // Animation de repos (idle)
->>>>>>> ennemi
+
         if (idleFrameTimer >= idleFrameTime) {
             idleFrameTimer -= idleFrameTime;
             idleFrame = (idleFrame + 1) % idleTextures.size();
@@ -150,12 +149,12 @@ void Player::update(float deltaTime) {
         }
     }
     else {
-<<<<<<< HEAD
+
         // Animation Walk
-=======
+
         walkFrameTimer += deltaTime;
         // Animation de marche
->>>>>>> ennemi
+
         if (walkFrameTimer >= walkFrameTime) {
             walkFrameTimer -= walkFrameTime;
             walkFrame = (walkFrame + 1) % walkTextures.size();
@@ -163,13 +162,11 @@ void Player::update(float deltaTime) {
         }
     }
 
-<<<<<<< HEAD
+
     // Déplacement
     float moveX = 0.0f, moveY = 0.0f;
-=======
-    float moveX = 0.0f;
-    float moveY = 0.0f;
->>>>>>> ennemi
+
+
     const float speed = 6.0f;
 
     if (Keyboard::isKeyPressed(Keyboard::Z)) moveY -= speed;

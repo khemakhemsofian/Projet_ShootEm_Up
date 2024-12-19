@@ -29,8 +29,7 @@ void Game::run()
 }
 void Game::loadResources()
 {
-<<<<<<< HEAD
-=======
+
     for (int i = 1; i <= 8; ++i) {
         if (!EnnemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk" + to_string(i) + ".png")) {
             throw runtime_error("Erreur de chargement du sprite Walk" + to_string(i));
@@ -39,7 +38,6 @@ void Game::loadResources()
 
     }
     
->>>>>>> ennemi
     const string filenames[4] = {
         "Assets/Image/Jungle/1.Backround.png",
         "Assets/Image/Jungle/2.Trees_back.png",
@@ -70,12 +68,8 @@ void Game::event(Event& _event)
 }
 
 void Game::update()
-<<<<<<< HEAD
-{ 
-=======
 {
 
->>>>>>> ennemi
     const float speeds[4] = { 100.0f, 150.0f, 200.0f, 250.0f };
     float deltaTime = clock.restart().asSeconds();
 

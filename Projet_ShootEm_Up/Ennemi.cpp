@@ -17,26 +17,24 @@ Ennemi::Ennemi(RenderWindow& _window, Vector2f position, vector<Texture> _walkTe
     
     walkTextures = _walkTextures;
 }
-void Ennemi::loadResources()
-<<<<<<< HEAD
-{ 
-    if (!ennemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk1.png"))
-    {
-        throw runtime_error("Erreur de chargement du sprite de l'ennemi");
-    }
-=======
-{
-  /*  for (int i = 1; i <= 8; ++i) {
-        if (!EnnemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk" + to_string(i) + ".png")) {
-            throw runtime_error("Erreur de chargement du sprite Walk" + to_string(i));
-        }
-        walkTextures.push_back(EnnemiTexture);
->>>>>>> ennemi
-
-    }*/
-
-    
-}
+//void Ennemi::loadResources()
+//{ 
+//    if (!ennemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk1.png"))
+//    {
+//        throw runtime_error("Erreur de chargement du sprite de l'ennemi");
+//    }
+//{
+//  /*  for (int i = 1; i <= 8; ++i) {
+//        if (!EnnemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk" + to_string(i) + ".png")) {
+//            throw runtime_error("Erreur de chargement du sprite Walk" + to_string(i));
+//        }
+//        walkTextures.push_back(EnnemiTexture);
+//
+//
+//    }*/
+//
+//    
+//}
 
 
 void Ennemi::Events(Event& _event)
