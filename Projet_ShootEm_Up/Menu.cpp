@@ -19,7 +19,7 @@ Menu::Menu(float _width, float _height)
 	clickSound.setBuffer(clickSoundBuffer);
 	clickSound.setVolume(100.0f);
 	
-	vector<string> _MenuContainer = {"Faire festin de jeu" , "Les besognes de choix", "Abandonner la joute"};
+	vector<string> _MenuContainer = {"Faire festin de jeu" , "Les besognes de choix","Forger son recit", "Abandonner la joute"};
 	_selectedIndex = 0;
 
 	for (size_t i = 0; i < _MenuContainer.size(); i++)

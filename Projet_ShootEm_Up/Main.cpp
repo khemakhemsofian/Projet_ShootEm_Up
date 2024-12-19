@@ -82,6 +82,9 @@ int main()
                     _inGame = false; 
                     break;
                 case 2:
+                    cout << "Mode éditeur" << endl;
+                    break;
+                case 3:
                     cout << "Quitter le jeu" << endl;
                     _window.close();
                     break;
