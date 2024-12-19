@@ -56,7 +56,7 @@ void Game::loadResources()
         throw runtime_error("Erreur de chargement de la musique du jeu");
     }	
     _gameMusic.setLoop(true);
-    _gameMusic.setVolume(100.0f);
+    _gameMusic.setVolume(10.0f);
     _gameMusic.play();
   
 }
@@ -98,6 +98,16 @@ void Game::update()
         }
     }
     player.update(deltaTime, ennemis);
+
+    for (auto it = ennemis.begin(); it != ennemis.end(); ) {
+        if (it->getPosition().x <= 0.0f) { // Gobelin touche le bord gauche
+            player.takeDamage(10.0f); // Inflige 10 points de dégâts
+            it = ennemis.erase(it); // Supprime le gobelin
+        }
+        else {
+            ++it;
+        }
+    }
 
     spawnEnnemi(window, deltaTime);
     for (auto& ennemi : ennemis)

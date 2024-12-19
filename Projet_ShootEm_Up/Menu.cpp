@@ -10,14 +10,14 @@ Menu::Menu(float _width, float _height)
 		cerr << "Erreur de chargement de la musique" << endl;
 	}
 	_MenuMusic.setLoop(true);
-	_MenuMusic.setVolume(100.0f);
+	_MenuMusic.setVolume(10.0f);
 	_MenuMusic.play();
 
 	if (!clickSoundBuffer.loadFromFile("Assets/Audio/Music/Menu/clicksound.wav")) {
 		throw std::runtime_error("Erreur de chargement du son de tir");
 	}
 	clickSound.setBuffer(clickSoundBuffer);
-	clickSound.setVolume(100.0f);
+	clickSound.setVolume(10.0f);
 	
 	vector<string> _MenuContainer = {"Faire festin de jeu" , "Les besognes de choix","Forger son recit", "Abandonner la joute"};
 	_selectedIndex = 0;

@@ -19,6 +19,7 @@ public:
     void increaseScore();
     void updateScoreText();
     void takeDamage(float damage);
+    
      
 
 private:
@@ -62,7 +63,6 @@ private:
 
     float shootCooldownTime;  
     float shootCooldownTimer; 
-
 
     void loadResources();
     void updateProjectiles(float deltaTime, vector<Ennemi>& ennemis);
