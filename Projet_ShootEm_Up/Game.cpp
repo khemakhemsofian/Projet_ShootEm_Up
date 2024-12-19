@@ -1,8 +1,12 @@
 #include "Game.h"
 
-Game::Game(RenderWindow& win) : window(win), player(win), ennemi(win){
-    window.setVerticalSyncEnabled(true);
 
+
+Game::Game(RenderWindow& win) : window(win), player(win){
+    window.setVerticalSyncEnabled(true);
+    goblinSpawnTimer = 0.0f;
+    goblinSpawnDelay = 2.0f; 
+    maxGoblins = 5; 
   
 }
 
@@ -19,10 +23,23 @@ void Game::run()
         }
         rendu();
         update();
+       
+       
     }
 }
 void Game::loadResources()
 {
+<<<<<<< HEAD
+=======
+    for (int i = 1; i <= 8; ++i) {
+        if (!EnnemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk" + to_string(i) + ".png")) {
+            throw runtime_error("Erreur de chargement du sprite Walk" + to_string(i));
+        }
+        walkTextures.push_back(EnnemiTexture);
+
+    }
+    
+>>>>>>> ennemi
     const string filenames[4] = {
         "Assets/Image/Jungle/1.Backround.png",
         "Assets/Image/Jungle/2.Trees_back.png",
@@ -43,16 +60,22 @@ void Game::loadResources()
     _gameMusic.setLoop(true);
     _gameMusic.setVolume(100.0f);
     _gameMusic.play();
-
+  
 }
 void Game::event(Event& _event)
 {
     player.Events(_event);
-    ennemi.Events(_event);
+    for(auto& ennemi: ennemis)
+        ennemi.Events(_event);
 }
 
 void Game::update()
+<<<<<<< HEAD
 { 
+=======
+{
+
+>>>>>>> ennemi
     const float speeds[4] = { 100.0f, 150.0f, 200.0f, 250.0f };
     float deltaTime = clock.restart().asSeconds();
 
@@ -81,9 +104,64 @@ void Game::update()
         }
     }
     player.update(deltaTime);
-  
+
+    spawnEnnemi(window, deltaTime);
+    for (auto& ennemi : ennemis)
+    {
+        ennemi.update(deltaTime, window);
+    }
+
+ 
 }
 
+void Game::spawnEnnemi(RenderWindow& window,float deltaTime) {
+    //if (ennemis.empty()) {
+    //    Ennemi newEnnemi(window, position);
+    //   
+    //    ennemis.push_back(newEnnemi);
+    //}
+    goblinSpawnTimer += deltaTime;
+    if (goblinSpawnTimer >= goblinSpawnDelay && ennemis.size() < maxGoblins) {
+
+        goblinSpawnTimer = 0.0f;
+        float x = window.getSize().x - 50.0f; 
+        float y = static_cast<float>(rand() % static_cast<int>(window.getSize().y - 50.0f)); 
+        ennemis.emplace_back(window,Vector2f(x, y), walkTextures);
+
+        cout << ennemis.size() << "   spawn\n";
+        
+    }
+
+    //for (auto it = ennemis.begin(); it != ennemis.end();) {
+    //    it->update(deltaTime, window);
+    //    if (!it->hasGoblins()) {
+    //        it = ennemis.erase(it);
+    //    }
+    //    else {
+    //        ++it;
+    //    }
+    //}
+}
+
+//void Ennemi::updateSpawnEnnemi(float deltaTime, RenderWindow& window) {
+//    goblinSpawnTimer += deltaTime;
+//    if (goblinSpawnTimer >= goblinSpawnDelay && goblins.size() < maxGoblins) {
+//        goblinSpawnTimer = 0.0f;
+//        float x = window.getSize().x + ennemiSprite.getGlobalBounds().width;
+//        float y = static_cast<float>(rand() % static_cast<int>(window.getSize().y - ennemiSprite.getGlobalBounds().height));
+//        spawnGoblin(Vector2f(x, y), window);
+//    }
+//
+//    for (auto it = goblins.begin(); it != goblins.end();) {
+//        it->update(deltaTime, window);
+//        if (it->getPosition().x < -it->getGlobalBounds().width) {
+//              it = goblins.erase(it);
+//        }
+//        else {
+//            ++it;
+//        }
+//    }
+//}
 void Game::playMusic() {
     _gameMusic.setLoop(true);
     _gameMusic.play();
@@ -113,6 +191,11 @@ void Game::rendu()
             (window.getSize().y - backgroundTextures[i].getSize().y * scale) / 2.f
         );
         window.draw(backgroundSprites[i]);
+    }
+
+    for (auto& ennemi : ennemis) {
+        cout << "on draw ennemi" << ennemi.getPosition().x << endl;
+        ennemi.draw(window);
     }
     player.draw(window);
     window.display();

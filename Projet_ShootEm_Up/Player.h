@@ -15,9 +15,13 @@ public:
     void draw(RenderWindow& window);
     void shootProjectile();
     bool isMoving() const;
+<<<<<<< HEAD
     void takeDamage(float damage);
      
+=======
+>>>>>>> ennemi
 private:
+    float deltaTime;
     RenderWindow& window;
     Texture playerTexture;
     Sprite playerSprite;
@@ -47,12 +51,15 @@ private:
     float maxHealth;
     RectangleShape healthBarBackground;
     RectangleShape healthBar;
+<<<<<<< HEAD
 
     SoundBuffer shootSoundBuffer;
     Sound shootSound;
 
     float shootCooldownTime;  
     float shootCooldownTimer; 
+=======
+>>>>>>> ennemi
 
     void loadResources();
     void updateProjectiles(float deltaTime);
