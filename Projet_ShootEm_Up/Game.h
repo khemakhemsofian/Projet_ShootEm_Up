@@ -15,11 +15,13 @@ public:
     void run();
     void playMusic();
     void stopMusic();
+    void increaseScore();
 
 private:
     Texture EnnemiTexture;
     vector<Texture> walkTextures;
 
+    int score;
     float deltaTime;
     RenderWindow& window;
     void event(Event& _event);

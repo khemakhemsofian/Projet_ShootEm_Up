@@ -249,6 +249,8 @@ void Player::shootProjectile() {
 void Player::updateProjectiles(float deltaTime, vector<Ennemi>& ennemis) {
     const float projectileSpeed = 300.f;
 
+    scoreText.setString("Score: " + std::to_string(score));
+
     for (auto it = projectiles.begin(); it != projectiles.end();) {
         it->move(projectileSpeed * deltaTime, 0.f);
 

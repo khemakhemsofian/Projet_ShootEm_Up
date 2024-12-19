@@ -98,7 +98,7 @@ void Game::update()
         }
     }
     player.update(deltaTime, ennemis);
-    player.updateProjectiles(deltaTime, ennemis);
+
 
     for (auto it = ennemis.begin(); it != ennemis.end(); ) {
         if (it->getPosition().x <= 0.0f) { // Gobelin touche le bord gauche
@@ -117,6 +117,10 @@ void Game::update()
     }
 
  
+}
+
+void Game::increaseScore() {
+    score++;  // Augmenter le score de 1
 }
 
 void Game::spawnEnnemi(RenderWindow& window,float deltaTime) {
