@@ -9,7 +9,7 @@ Résumé :
 Dans un monde ravagé par les ténèbres, vous incarnez un valeureux chevalier, dernier défenseur du royaume, chargé de restaurer la paix en affrontant des hordes de créatures maléfiques  qui dévastent les terres et menacent l'humanité. Armé de votre épée légendaire, de  vôtre arc de légende et du bouclier mystique, combattez dans des batailles frénétiques aux multiples decord.
 
 3. Concept de Base
-Gameplay principal : Le joueur contrôle un chevalier, détruit des vagues d’ennemis et évite des projectiles pour progresser dans les niveaux.
+Gameplay principal : Le joueur contrôle un chevalier, détruit des vagues d’ennemis et doit tuer le plus de mob possible sans que le mob touche le coté gauche de l'écran sinon tu perd des PV et meurt.
 Objectifs :
 Court terme : Survivre et accumuler des points en détruisant les ennemis.
 Long terme : Compléter les niveaux, vaincre les boss et sauver le royaume.
