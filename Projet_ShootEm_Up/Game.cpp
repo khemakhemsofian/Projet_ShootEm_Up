@@ -43,13 +43,12 @@ void Game::loadResources()
         throw runtime_error("Erreur de chargement de la musique du jeu");
     }	
     _gameMusic.setLoop(true);
-    _gameMusic.setVolume(30.f);
+    _gameMusic.setVolume(100.0f);
     _gameMusic.play();
 
 }
 void Game::event(Event& _event)
 {
-    
     player.Events(_event);
     ennemi.Events(_event);
 }

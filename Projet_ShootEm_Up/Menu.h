@@ -20,6 +20,7 @@ public:
 	int getSelectedIndex();
 	void selectOption(Vector2f mousePosition);
 	void UpdateEffetSurvol(Vector2f mousePosition);
+	void ClickSound();
 	void playMusic();
 	void stopMusic();
 protected:
@@ -31,6 +32,8 @@ protected:
 	int _selectedIndex;
 	Font _MenuFront;
 	Music _MenuMusic;
+	SoundBuffer clickSoundBuffer;
+	Sound clickSound;
 	
 };
 

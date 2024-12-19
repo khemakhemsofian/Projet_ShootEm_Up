@@ -102,7 +102,7 @@ void Player::Events(const Event& event) {
     if (event.type == Event::KeyPressed && event.key.code == Keyboard::H) {
         takeDamage(10.0f);  // Appliquer 10 points de dégâts
     }
-    //if (event.type == Event::MouseButtonPressed)
+    
 }
 
 void Player::update(float deltaTime) {

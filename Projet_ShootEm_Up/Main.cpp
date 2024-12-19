@@ -21,7 +21,7 @@ int main()
     GameScene _gameScene(_game, _window);
     Music _MenuMusic;
     OptionScene* _optionScene;
-
+   
     bool _inMenu = true;
     bool _inOptions = false;
     bool _inGame= false;
@@ -63,6 +63,8 @@ int main()
             {
                 Vector2f _mousePosition = _window.mapPixelToCoords(Vector2i(event.mouseButton.x, event.mouseButton.y));
                 _menu.selectOption(_mousePosition);
+                _menu.ClickSound();
+                
                 int _selected = _menu.getSelectedIndex();
                 switch (_selected)
                 {

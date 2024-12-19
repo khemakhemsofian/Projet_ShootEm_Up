@@ -45,12 +45,11 @@ private:
 
     float health;
     float maxHealth;
-    sf::RectangleShape healthBarBackground;
-    sf::RectangleShape healthBar;
+    RectangleShape healthBarBackground;
+    RectangleShape healthBar;
 
-    sf::SoundBuffer shootSoundBuffer;
-    sf::Sound shootSound;
-
+    SoundBuffer shootSoundBuffer;
+    Sound shootSound;
 
     float shootCooldownTime;  
     float shootCooldownTimer; 
