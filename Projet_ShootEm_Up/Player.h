@@ -16,7 +16,8 @@ public:
     void draw(RenderWindow& window);
     void shootProjectile();
     bool isMoving() const;
-
+    void increaseScore();
+    void updateScoreText();
     void takeDamage(float damage);
      
 
@@ -52,6 +53,9 @@ private:
     RectangleShape healthBarBackground;
     RectangleShape healthBar;
 
+    int score;
+    Text scoreText;
+    Font scoreFont;
 
     SoundBuffer shootSoundBuffer;
     Sound shootSound;

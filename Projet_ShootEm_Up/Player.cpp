@@ -16,6 +16,16 @@ void Player::loadResources() {
     playerSprite.setPosition(window.getSize().x / 2.f, window.getSize().y / 2.f);
     playerSprite.setScale(6.f, 6.f);
 
+    if (!scoreFont.loadFromFile("Assets/Font/MedievalMystery.ttf")) {
+        throw std::runtime_error("Erreur de chargement de la police du score");
+    }
+
+    scoreText.setFont(scoreFont);
+    scoreText.setCharacterSize(30);  
+    scoreText.setFillColor(sf::Color(204, 119, 34));  
+    scoreText.setPosition(10.f, 40.f);  
+    updateScoreText();
+
 
     Texture texture;
     for (int i = 1; i <= 6; ++i) {
@@ -252,6 +262,7 @@ void Player::updateProjectiles(float deltaTime, vector<Ennemi>& ennemis) {
                 it--;
                 itt--;
                 collisionDetected = true;
+                increaseScore();
                 break;
             }
             itt++;
@@ -265,6 +276,14 @@ void Player::updateProjectiles(float deltaTime, vector<Ennemi>& ennemis) {
     }
 }
 
+void Player::increaseScore() {
+    score++;  // Augmente le score
+    updateScoreText();  // Met à jour le texte du score
+}
+
+void Player::updateScoreText() {
+    scoreText.setString((score < 10 ? "0" : "") + std::to_string(score));
+}
 
 void Player::draw(RenderWindow& window) {
 
@@ -277,6 +296,8 @@ void Player::draw(RenderWindow& window) {
     else {
         window.draw(gameOverText);
     }
+
+    window.draw(scoreText);
 
     for (const auto& projectile : projectiles) {
         window.draw(projectile);
