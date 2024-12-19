@@ -17,18 +17,29 @@ public:
     void stopMusic();
 
 private:
+    Texture EnnemiTexture;
+    vector<Texture> walkTextures;
+
     float deltaTime;
     RenderWindow& window;
     void event(Event& _event);
     Clock clock;
     void update();
+    void spawnEnnemi(RenderWindow& window,float deltaTime);
+    void spawnGoblin(const Vector2f& position, RenderWindow& window);
+    
+   
     void rendu();
     Texture backgroundTextures[4];
     Sprite backgroundSprites[8];
     float backgroundOffsets[4];
+   
     void loadResources();
     Player player;
-    Ennemi ennemi;
+    vector<Ennemi> ennemis;
+    float goblinSpawnTimer;
+    float goblinSpawnDelay;
+    int maxGoblins;
     Music _gameMusic;
 
 

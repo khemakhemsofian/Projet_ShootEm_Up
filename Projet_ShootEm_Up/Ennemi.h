@@ -2,13 +2,14 @@
 #define ENNEMI_H
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 using namespace sf;
 using namespace std;
 class Ennemi
 {
 public:
    
-    Ennemi(RenderWindow& window);
+    Ennemi(RenderWindow& window, Vector2f position, vector<Texture> _walkTextures);
     void update(float deltaTime, RenderWindow& window);
     void draw(RenderWindow& window);
     void Events(Event& _event);
@@ -16,13 +17,14 @@ public:
     void loadResources();
     //void updateAnimation(float deltaTime);
     void spawnGoblin(const Vector2f& position, RenderWindow& window);
-    void updateGoblins(float deltaTime, RenderWindow& window);
-    void drawGoblins(RenderWindow& window);
+    void updateGoblin(float deltaTime,RenderWindow& window);
     const Vector2f& getPosition() const;
     FloatRect getGlobalBounds() const;
+    bool hasGoblins() const { return hasGoblin; }
 
 private:
     //RenderWindow& window;
+    bool hasGoblin;
     float ennemiSpeed;
     Sprite ennemiSprite;
     Texture EnnemiTexture;
@@ -31,10 +33,7 @@ private:
     int walkFrame;
     float walkFrameTime;
     float walkFrameTimer;
-    vector<Ennemi> goblins;
-    float goblinSpawnTimer;
-    float goblinSpawnDelay;
-    int maxGoblins;
+  
 };
 
 #endif // ENNEMI_H
