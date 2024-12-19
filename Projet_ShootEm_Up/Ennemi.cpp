@@ -5,7 +5,7 @@ Ennemi::Ennemi(RenderWindow& _window, Vector2f position, vector<Texture> _walkTe
 {
     ennemiPosition = position;
     ennemiSprite.setPosition(ennemiPosition);
-    ennemiSpeed = 400.0f;
+    ennemiSpeed = 600.0f;
     hasGoblin = false;
 
     walkFrame = 0;

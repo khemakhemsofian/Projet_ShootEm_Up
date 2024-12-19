@@ -60,7 +60,7 @@ void Player::loadResources() {
     shootSound.setVolume(70.f);
 
     // Initialiser le cooldown
-    shootCooldownTime = 0.5f;  // 0.5 seconde entre deux tirs
+    shootCooldownTime = 0.3f;  
     shootCooldownTimer = 0.0f;
 
 

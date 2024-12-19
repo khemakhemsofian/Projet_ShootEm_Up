@@ -5,7 +5,7 @@
 Game::Game(RenderWindow& win) : window(win), player(win){
     window.setVerticalSyncEnabled(true);
     goblinSpawnTimer = 0.0f;
-    goblinSpawnDelay = 2.0f; 
+    goblinSpawnDelay = 1.0f; 
     maxGoblins = 5; 
   
 }
