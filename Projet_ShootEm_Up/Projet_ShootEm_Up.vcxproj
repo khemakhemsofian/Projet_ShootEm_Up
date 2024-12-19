@@ -200,7 +200,7 @@
     <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3" />
     <Media Include="Assets\Audio\Music\Game\Player_projectile_attack_sword_0.wav" />
     <Media Include="Assets\Audio\Music\Game\The knight journey game-music.mp3" />
-    <Media Include="Assets\Audio\Music\Menu\UI-Click_Sound.wav" />
+    <Media Include="Assets\Audio\Music\Menu\clicksound.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

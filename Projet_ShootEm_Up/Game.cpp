@@ -23,8 +23,6 @@ void Game::run()
 }
 void Game::loadResources()
 {
-  
-    
     const string filenames[4] = {
         "Assets/Image/Jungle/1.Backround.png",
         "Assets/Image/Jungle/2.Trees_back.png",

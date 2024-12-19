@@ -72,6 +72,9 @@
     <ClCompile Include="Player.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
+    <ClCompile Include="Ennemi.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\BackGround_image0.jpeg">
@@ -89,17 +92,98 @@
     <Image Include="Assets\Image\Jungle\4.Ground.png">
       <Filter>Fichiers sources\Assets\Image\Jungle</Filter>
     </Image>
-    <Image Include="Assets\Image\Player\Idle.png">
-      <Filter>Fichiers sources\Assets\Image\Sprite\Player</Filter>
-    </Image>
-    <Image Include="..\..\..\..\Downloads\Projectile.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
-    <Image Include="Assets\Image\Player\Idle1.png">
-      <Filter>Fichiers de ressources</Filter>
-    </Image>
     <Image Include="Assets\Image\Player\Weapon\Projectile.png">
       <Filter>Fichiers sources\Assets\Image\Sprite\Player\Weapon</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death2.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\DeathFrames\Death4.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk2.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk4.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk5.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk6.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk7.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Ennemi\Gobelin\WalksFrames\Walk8.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\DeathFrames\Death1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\DeathFrames\Death2.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\DeathFrames\Death3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\DeathFrames\Death4.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\IdleFrames\Idle1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\IdleFrames\Idle2.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\IdleFrames\Idle3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\IdleFrames\Idle4.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\IdleFrames\Idle5.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\IdleFrames\Idle6.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk1.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk2.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk3.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk4.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk5.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk6.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk7.png">
+      <Filter>Fichiers de ressources</Filter>
+    </Image>
+    <Image Include="Assets\Image\Player\WalkFrames\Walk8.png">
+      <Filter>Fichiers de ressources</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +210,9 @@
     <ClInclude Include="Game.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Ennemi.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\..\..\Downloads\The knight journey main menu.mp3">
@@ -137,7 +224,7 @@
     <Media Include="Assets\Audio\Music\Game\Player_projectile_attack_sword_0.wav">
       <Filter>Fichiers sources\Assets\Audio\Music\Game</Filter>
     </Media>
-    <Media Include="Assets\Audio\Music\Menu\UI-Click_Sound.wav">
+    <Media Include="Assets\Audio\Music\Menu\clicksound.wav">
       <Filter>Fichiers sources\Assets\Audio\Music\Menu</Filter>
     </Media>
   </ItemGroup>

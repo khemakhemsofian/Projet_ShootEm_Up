@@ -164,6 +164,20 @@ void Player::update(float deltaTime) {
 
     playerSprite.move(moveX, moveY);
 
+    Vector2f newPosition = playerSprite.getPosition() + sf::Vector2f(moveX, moveY);
+
+    float leftBound = 0.0f;
+    float rightBound = window.getSize().x - playerSprite.getGlobalBounds().width;
+    float topBound = 0.0f;
+    float bottomBound = window.getSize().y - playerSprite.getGlobalBounds().height;
+
+    if (newPosition.x < leftBound) newPosition.x = leftBound;
+    if (newPosition.x > rightBound) newPosition.x = rightBound;
+    if (newPosition.y < topBound) newPosition.y = topBound;
+    if (newPosition.y > bottomBound) newPosition.y = bottomBound;
+
+    playerSprite.setPosition(newPosition);
+
     updateProjectiles(deltaTime);
 }
 
