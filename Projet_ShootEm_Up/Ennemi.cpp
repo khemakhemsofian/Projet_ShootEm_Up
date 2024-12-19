@@ -3,12 +3,9 @@
 
 Ennemi::Ennemi(RenderWindow& _window, Vector2f position, vector<Texture> _walkTextures)
 {
-    //loadResources();
-
     ennemiPosition = position;
     ennemiSprite.setPosition(ennemiPosition);
     ennemiSpeed = 100.0f;
-    //ennemiPosition = Vector2f(_window.getSize().x + ennemiSprite.getGlobalBounds().width, _window.getSize().y / 2.f);
     hasGoblin = false;
 
     walkFrame = 0;
@@ -17,30 +14,12 @@ Ennemi::Ennemi(RenderWindow& _window, Vector2f position, vector<Texture> _walkTe
     
     walkTextures = _walkTextures;
 }
-//void Ennemi::loadResources()
-//{ 
-//    if (!ennemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk1.png"))
-//    {
-//        throw runtime_error("Erreur de chargement du sprite de l'ennemi");
-//    }
-//{
-//  /*  for (int i = 1; i <= 8; ++i) {
-//        if (!EnnemiTexture.loadFromFile("Assets/Image/Ennemi/Gobelin/WalksFrames/Walk" + to_string(i) + ".png")) {
-//            throw runtime_error("Erreur de chargement du sprite Walk" + to_string(i));
-//        }
-//        walkTextures.push_back(EnnemiTexture);
-//
-//
-//    }*/
-//
-//    
-//}
-
 
 void Ennemi::Events(Event& _event)
 {
     
 }
+
 void Ennemi::update(float deltaTime, RenderWindow& window)
 {
     walkFrameTimer += deltaTime;
@@ -54,14 +33,17 @@ void Ennemi::update(float deltaTime, RenderWindow& window)
 
     EnnemiMovement(deltaTime, Vector2f(0.f, 0.f), window);
     updateGoblin(deltaTime, window);
-   
+
 }
+
+
 void Ennemi::spawnGoblin(const Vector2f& position, RenderWindow& window) {
     hasGoblin = true; 
     ennemiPosition = position;
     ennemiSprite.setPosition(ennemiPosition);
  
 }
+
 void Ennemi::updateGoblin(float deltaTime, RenderWindow& window)
 {
     if (hasGoblin) { 
@@ -91,9 +73,12 @@ void Ennemi::EnnemiMovement(float deltaTime, const Vector2f& playerPosition, Ren
     }
 
     ennemiSprite.setPosition(ennemiPosition);
-    ennemiSprite.setScale(6.0f,6.0f);
+    ennemiSprite.setScale(6.f,6.f);
 }
 
+void Ennemi::loadResources()
+{
+}
 
 
 void Ennemi::draw(RenderWindow& window)

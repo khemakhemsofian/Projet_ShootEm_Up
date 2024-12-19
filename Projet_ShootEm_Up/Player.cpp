@@ -105,7 +105,7 @@ void Player::Events(const Event& event) {
     
 }
 
-void Player::update(float deltaTime) {
+void Player::update(float deltaTime, vector<Ennemi>& _ennemis) {
 
     if (shootCooldownTimer > 0.0f) {
         shootCooldownTimer -= deltaTime;
@@ -127,14 +127,6 @@ void Player::update(float deltaTime) {
     }
 
     // Gére les animations et le mouvement si personnage vivant
-    //idleFrameTimer += deltaTime;
-    //walkFrameTimer += deltaTime;
-
-    //float moveX = 0.0f;
-    //float moveY = 0.0f;
-    //const float speed = 6.0f;
-
-
     if (!isMoving()) {
 
         // Animation Idle
@@ -196,7 +188,7 @@ void Player::update(float deltaTime) {
 
     playerSprite.setPosition(newPosition);
 
-    updateProjectiles(deltaTime);
+    updateProjectiles(deltaTime, _ennemis);
 }
 
 
@@ -244,21 +236,35 @@ void Player::shootProjectile() {
 
 }
 
-void Player::updateProjectiles(float deltaTime) {
+void Player::updateProjectiles(float deltaTime, vector<Ennemi>& ennemis) {
     const float projectileSpeed = 300.f;
 
     for (auto it = projectiles.begin(); it != projectiles.end();) {
         it->move(projectileSpeed * deltaTime, 0.f);
 
-
-        if (it->getPosition().x > window.getSize().x) {
-            it = projectiles.erase(it);
+        // Vérification des collisions avec les gobelins
+        bool collisionDetected = false;
+        for (auto itt = ennemis.begin(); itt != ennemis.end();) {
+            if (it->getGlobalBounds().intersects(itt->getGlobalBounds())) {
+                // Collision entre le projectile et un gobelin
+                itt = ennemis.erase(itt);  // Faire disparaître ou tuer le gobelin
+                it = projectiles.erase(it);  // Supprimer le projectile
+                it--;
+                itt--;
+                collisionDetected = true;
+                break;
+            }
+            itt++;
         }
-        else {
+
+        if (!collisionDetected && it->getPosition().x > window.getSize().x) {
+            it = projectiles.erase(it);  // Si le projectile est hors écran, le supprimer
+        } else {
             ++it;
         }
     }
 }
+
 
 void Player::draw(RenderWindow& window) {
 

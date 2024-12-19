@@ -5,13 +5,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <vector>
+#include "Ennemi.h"
 using namespace sf;
 using namespace std;
 class Player {
 public:
     Player(RenderWindow& window);
     void Events(const Event& event);
-    void update(float deltaTime);
+    void update(float deltaTime, vector<Ennemi>& ennemis);
     void draw(RenderWindow& window);
     void shootProjectile();
     bool isMoving() const;
@@ -60,7 +61,7 @@ private:
 
 
     void loadResources();
-    void updateProjectiles(float deltaTime);
+    void updateProjectiles(float deltaTime, vector<Ennemi>& ennemis);
 };
 
 #endif // PLAYER_H

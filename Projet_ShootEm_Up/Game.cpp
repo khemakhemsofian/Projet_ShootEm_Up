@@ -97,7 +97,7 @@ void Game::update()
             backgroundOffsets[i] = 0.0f;
         }
     }
-    player.update(deltaTime);
+    player.update(deltaTime, ennemis);
 
     spawnEnnemi(window, deltaTime);
     for (auto& ennemi : ennemis)
@@ -109,11 +109,7 @@ void Game::update()
 }
 
 void Game::spawnEnnemi(RenderWindow& window,float deltaTime) {
-    //if (ennemis.empty()) {
-    //    Ennemi newEnnemi(window, position);
-    //   
-    //    ennemis.push_back(newEnnemi);
-    //}
+    
     goblinSpawnTimer += deltaTime;
     if (goblinSpawnTimer >= goblinSpawnDelay && ennemis.size() < maxGoblins) {
 
@@ -126,36 +122,9 @@ void Game::spawnEnnemi(RenderWindow& window,float deltaTime) {
         
     }
 
-    //for (auto it = ennemis.begin(); it != ennemis.end();) {
-    //    it->update(deltaTime, window);
-    //    if (!it->hasGoblins()) {
-    //        it = ennemis.erase(it);
-    //    }
-    //    else {
-    //        ++it;
-    //    }
-    //}
+  
 }
 
-//void Ennemi::updateSpawnEnnemi(float deltaTime, RenderWindow& window) {
-//    goblinSpawnTimer += deltaTime;
-//    if (goblinSpawnTimer >= goblinSpawnDelay && goblins.size() < maxGoblins) {
-//        goblinSpawnTimer = 0.0f;
-//        float x = window.getSize().x + ennemiSprite.getGlobalBounds().width;
-//        float y = static_cast<float>(rand() % static_cast<int>(window.getSize().y - ennemiSprite.getGlobalBounds().height));
-//        spawnGoblin(Vector2f(x, y), window);
-//    }
-//
-//    for (auto it = goblins.begin(); it != goblins.end();) {
-//        it->update(deltaTime, window);
-//        if (it->getPosition().x < -it->getGlobalBounds().width) {
-//              it = goblins.erase(it);
-//        }
-//        else {
-//            ++it;
-//        }
-//    }
-//}
 void Game::playMusic() {
     _gameMusic.setLoop(true);
     _gameMusic.play();
